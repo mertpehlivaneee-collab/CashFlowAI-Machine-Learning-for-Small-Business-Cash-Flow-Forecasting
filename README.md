@@ -99,6 +99,18 @@ columns in bounded batches only when identifiable SME-labeled customers exist.
 Reports contain aggregate values only and no customer identifiers or
 transaction records.
 
+## Comprehensive aggregate profiling
+
+Run the bounded record-level profile across all eight tables:
+
+```powershell
+.\.venv\Scripts\python.exe -B scripts\profile_dataset_comprehensive.py
+```
+
+The profiler makes one coordinated pass over `transactions.parquet`, scans the
+other tables in bounded batches, and retains only aggregate state. It does not
+load complete tables, publish raw identifiers, or modify source data.
+
 ## Dependencies
 
 - `pyarrow==23.0.1` — planned for read-only Parquet metadata inspection in a

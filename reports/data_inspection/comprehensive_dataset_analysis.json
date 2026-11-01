@@ -1,0 +1,4558 @@
+{
+  "customer_reference_sets": {
+    "leasing_agreements": {
+      "distinct_references": 17898,
+      "orphan_references": 0,
+      "verified": true
+    },
+    "life_insurance": {
+      "distinct_references": 43994,
+      "orphan_references": 0,
+      "verified": true
+    },
+    "margin_assets": {
+      "distinct_references": 199734,
+      "orphan_references": 0,
+      "verified": true
+    },
+    "margin_liabilities": {
+      "distinct_references": 37234,
+      "orphan_references": 0,
+      "verified": true
+    },
+    "pension": {
+      "distinct_references": 123585,
+      "orphan_references": 0,
+      "verified": true
+    },
+    "property_insurance": {
+      "distinct_references": 69886,
+      "orphan_references": 0,
+      "verified": true
+    },
+    "transactions": {
+      "distinct_references": 200000,
+      "orphan_references": 0,
+      "verified": true
+    }
+  },
+  "customers": {
+    "client_id_primary_key_verified": true,
+    "segment_distribution": [
+      {
+        "count": 200000,
+        "value": "Private"
+      }
+    ],
+    "sme_count": 0
+  },
+  "dataset_name": "student_export",
+  "execution": {
+    "batch_size": 65536,
+    "large_join_materializations": 0,
+    "memory_limit_mb": 1024,
+    "transaction_full_passes": 1
+  },
+  "inspection_mode": "bounded_record_level_aggregate",
+  "limitations": [
+    "Exact global distinctness for transaction IDs and counterparty IBANs was intentionally deferred to avoid retaining unbounded identifiers.",
+    "Continuous-value quantiles use a deterministic systematic sample and are labelled approximate.",
+    "Customer segment availability prevents SME selection even if transaction relationships are complete.",
+    "No cleaning, weekly target aggregation, feature engineering, model training or SME selection was performed."
+  ],
+  "pyarrow_version": "23.0.1",
+  "relationships": [
+    {
+      "cardinality": "one customer to many table rows",
+      "data_type_compatible": true,
+      "distinct_orphan_reference_count": 0,
+      "distinct_reference_count": 200000,
+      "matching_distinct_reference_count": 200000,
+      "matching_row_count": 120926662,
+      "null_reference_count": 0,
+      "orphan_count_method": "exact_bounded_set",
+      "orphan_row_count": 0,
+      "reference_count_method": "exact_bounded_set",
+      "referencing_row_count": 120926662,
+      "row_duplication_risk": "Customer joins may multiply rows because each customer can have multiple records.",
+      "source_column": "client_id_fk",
+      "source_table": "transactions",
+      "target_column": "client_id",
+      "target_table": "customers",
+      "verified": true
+    },
+    {
+      "cardinality": "one customer to many table rows",
+      "data_type_compatible": true,
+      "distinct_orphan_reference_count": 0,
+      "distinct_reference_count": 17898,
+      "matching_distinct_reference_count": 17898,
+      "matching_row_count": 116660,
+      "null_reference_count": 0,
+      "orphan_count_method": "exact_bounded_set",
+      "orphan_row_count": 0,
+      "reference_count_method": "exact_bounded_set",
+      "referencing_row_count": 116660,
+      "row_duplication_risk": "Customer joins may multiply rows because each customer can have multiple records.",
+      "source_column": "client_id_fk",
+      "source_table": "leasing_agreements",
+      "target_column": "client_id",
+      "target_table": "customers",
+      "verified": true
+    },
+    {
+      "cardinality": "one customer to many table rows",
+      "data_type_compatible": true,
+      "distinct_orphan_reference_count": 0,
+      "distinct_reference_count": 43994,
+      "matching_distinct_reference_count": 43994,
+      "matching_row_count": 592381,
+      "null_reference_count": 0,
+      "orphan_count_method": "exact_bounded_set",
+      "orphan_row_count": 0,
+      "reference_count_method": "exact_bounded_set",
+      "referencing_row_count": 592381,
+      "row_duplication_risk": "Customer joins may multiply rows because each customer can have multiple records.",
+      "source_column": "client_id_fk",
+      "source_table": "life_insurance",
+      "target_column": "client_id",
+      "target_table": "customers",
+      "verified": true
+    },
+    {
+      "cardinality": "one customer to many table rows",
+      "data_type_compatible": true,
+      "distinct_orphan_reference_count": 0,
+      "distinct_reference_count": 69886,
+      "matching_distinct_reference_count": 69886,
+      "matching_row_count": 1012945,
+      "null_reference_count": 0,
+      "orphan_count_method": "exact_bounded_set",
+      "orphan_row_count": 0,
+      "reference_count_method": "exact_bounded_set",
+      "referencing_row_count": 1012945,
+      "row_duplication_risk": "Customer joins may multiply rows because each customer can have multiple records.",
+      "source_column": "client_id_fk",
+      "source_table": "property_insurance",
+      "target_column": "client_id",
+      "target_table": "customers",
+      "verified": true
+    },
+    {
+      "cardinality": "one customer to many table rows",
+      "data_type_compatible": true,
+      "distinct_orphan_reference_count": 0,
+      "distinct_reference_count": 123585,
+      "matching_distinct_reference_count": 123585,
+      "matching_row_count": 2966040,
+      "null_reference_count": 0,
+      "orphan_count_method": "exact_bounded_set",
+      "orphan_row_count": 0,
+      "reference_count_method": "exact_bounded_set",
+      "referencing_row_count": 2966040,
+      "row_duplication_risk": "Customer joins may multiply rows because each customer can have multiple records.",
+      "source_column": "client_id_fk",
+      "source_table": "pension",
+      "target_column": "client_id",
+      "target_table": "customers",
+      "verified": true
+    },
+    {
+      "cardinality": "one customer to many table rows",
+      "data_type_compatible": true,
+      "distinct_orphan_reference_count": 0,
+      "distinct_reference_count": 199734,
+      "matching_distinct_reference_count": 199734,
+      "matching_row_count": 4561521,
+      "null_reference_count": 0,
+      "orphan_count_method": "exact_bounded_set",
+      "orphan_row_count": 0,
+      "reference_count_method": "exact_bounded_set",
+      "referencing_row_count": 4561521,
+      "row_duplication_risk": "Customer joins may multiply rows because each customer can have multiple records.",
+      "source_column": "client_id_fk",
+      "source_table": "margin_assets",
+      "target_column": "client_id",
+      "target_table": "customers",
+      "verified": true
+    },
+    {
+      "cardinality": "one customer to many table rows",
+      "data_type_compatible": true,
+      "distinct_orphan_reference_count": 0,
+      "distinct_reference_count": 37234,
+      "matching_distinct_reference_count": 37234,
+      "matching_row_count": 238478,
+      "null_reference_count": 0,
+      "orphan_count_method": "exact_bounded_set",
+      "orphan_row_count": 0,
+      "reference_count_method": "exact_bounded_set",
+      "referencing_row_count": 238478,
+      "row_duplication_risk": "Customer joins may multiply rows because each customer can have multiple records.",
+      "source_column": "client_id_fk",
+      "source_table": "margin_liabilities",
+      "target_column": "client_id",
+      "target_table": "customers",
+      "verified": true
+    }
+  ],
+  "report_schema_version": "1.0",
+  "summary": {
+    "parquet_file_count": 8,
+    "total_columns": 81,
+    "total_file_size_bytes": 3515988012,
+    "total_rows": 130614687
+  },
+  "tables": [
+    {
+      "classification": "customer master data",
+      "column_count": 13,
+      "columns": {
+        "bank_reg_dt": {
+          "arrow_type": "timestamp[us]",
+          "cashflow_use": "Potential eligibility or temporal context; requires later leakage review.",
+          "dictionary_description": "Date when the customer first registered with the bank. Transactions only exist on or after this date.",
+          "dictionary_type": "date",
+          "distinct_count": 5750,
+          "distinct_method": "exact",
+          "interpretation": "Date or timestamp used to assess coverage and temporal consistency.",
+          "maximum": "2025-09-29T00:00:00",
+          "minimum": "2010-01-01T00:00:00",
+          "name": "bank_reg_dt",
+          "non_null_count": 200000,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "parquet_logical_type": "Timestamp(isAdjustedToUTC=false, timeUnit=microseconds, is_from_converted_type=false, force_set_converted_type=false)",
+          "parquet_physical_type": "INT64",
+          "role": "timestamp"
+        },
+        "birth_or_reg_dt": {
+          "arrow_type": "timestamp[ns]",
+          "cashflow_use": "Potential eligibility or temporal context; requires later leakage review.",
+          "dictionary_description": "Date of birth (Private) or company registration date (SME/Corporate).",
+          "dictionary_type": "date",
+          "distinct_count": 24854,
+          "distinct_method": "exact",
+          "interpretation": "Date or timestamp used to assess coverage and temporal consistency.",
+          "maximum": "2027-02-10T00:00:00",
+          "minimum": "1940-01-01T00:00:00",
+          "name": "birth_or_reg_dt",
+          "non_null_count": 200000,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "parquet_logical_type": "Timestamp(isAdjustedToUTC=false, timeUnit=nanoseconds, is_from_converted_type=false, force_set_converted_type=false)",
+          "parquet_physical_type": "INT64",
+          "role": "timestamp"
+        },
+        "client_id": {
+          "arrow_type": "string",
+          "blank_count": 0,
+          "cashflow_use": "Essential for customer identification and relationship checks.",
+          "dictionary_description": "Unique customer identifier, e.g. [identifier example omitted]. Used as the join key to all other tables via client_id_fk.",
+          "dictionary_type": "string",
+          "distinct_count": 200000,
+          "distinct_method": "exact_bounded_set",
+          "interpretation": "Bounded key used for counting, overlap tests or aggregate uniqueness checks.",
+          "maximum": null,
+          "minimum": null,
+          "name": "client_id",
+          "non_null_count": 200000,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "parquet_logical_type": "String",
+          "parquet_physical_type": "BYTE_ARRAY",
+          "prefix_counts": [
+            {
+              "count": 200000,
+              "value": "CL"
+            }
+          ],
+          "role": "identifier",
+          "string_length": {
+            "maximum": 9,
+            "mean": 9.0,
+            "minimum": 9
+          }
+        },
+        "corp_group_id": {
+          "arrow_type": "string",
+          "blank_count": 0,
+          "cashflow_use": "Descriptive or cohort context; not a direct cash-flow measure.",
+          "dictionary_description": "Corporate group identifier (only populated for SME/Corporate customers belonging to a group).",
+          "dictionary_type": "string",
+          "distinct_count": 0,
+          "distinct_method": "exact_bounded_set",
+          "interpretation": "Bounded key used for counting, overlap tests or aggregate uniqueness checks.",
+          "maximum": null,
+          "minimum": null,
+          "name": "corp_group_id",
+          "non_null_count": 0,
+          "null_count": 200000,
+          "null_percentage": 100.0,
+          "nullable": true,
+          "parquet_logical_type": "String",
+          "parquet_physical_type": "BYTE_ARRAY",
+          "prefix_counts": [],
+          "role": "identifier",
+          "string_length": {
+            "maximum": null,
+            "mean": null,
+            "minimum": null
+          }
+        },
+        "gender_cd": {
+          "additional_distinct_values": 0,
+          "arrow_type": "string",
+          "cashflow_use": "Descriptive or cohort context; not a direct cash-flow measure.",
+          "dictionary_description": "Gender. M male. F female. U unknown/undisclosed (business entities). X data anomaly (intentionally injected).",
+          "dictionary_type": "string",
+          "distinct_count": 4,
+          "distinct_method": "exact",
+          "expected_values_from_dictionary": [
+            "F",
+            "M",
+            "U",
+            "X"
+          ],
+          "interpretation": "Categorical or descriptive code summarised by exact frequency.",
+          "maximum": null,
+          "minimum": null,
+          "missing_expected_values": [],
+          "name": "gender_cd",
+          "non_null_count": 200000,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "parquet_logical_type": "String",
+          "parquet_physical_type": "BYTE_ARRAY",
+          "role": "category",
+          "top_values": [
+            {
+              "count": 100203,
+              "value": "F"
+            },
+            {
+              "count": 95462,
+              "value": "M"
+            },
+            {
+              "count": 4054,
+              "value": "U"
+            },
+            {
+              "count": 281,
+              "value": "X"
+            }
+          ],
+          "unexpected_values": []
+        },
+        "group_head_flg": {
+          "additional_distinct_values": 0,
+          "arrow_type": "int64",
+          "cashflow_use": "Descriptive or cohort context; not a direct cash-flow measure.",
+          "dictionary_description": "Corporate group head flag. 0 for all private customers. 1 if this company is the head of a corporate group.",
+          "dictionary_type": "string",
+          "distinct_count": 1,
+          "distinct_method": "exact",
+          "expected_values_from_dictionary": [
+            0,
+            1
+          ],
+          "interpretation": "Low-cardinality numeric code or calendar component.",
+          "maximum": 0,
+          "minimum": 0,
+          "missing_expected_values": [
+            1
+          ],
+          "name": "group_head_flg",
+          "non_null_count": 200000,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "parquet_logical_type": "Int(bitWidth=64, isSigned=true)",
+          "parquet_physical_type": "INT64",
+          "role": "categorical_numeric",
+          "top_values": [
+            {
+              "count": 200000,
+              "value": 0
+            }
+          ],
+          "unexpected_values": []
+        },
+        "household_id": {
+          "arrow_type": "string",
+          "blank_count": 0,
+          "cashflow_use": "Descriptive or cohort context; not a direct cash-flow measure.",
+          "dictionary_description": "Household group identifier. Customers sharing a household_id live together. Singles have a unique ID prefixed S; households use HH.",
+          "dictionary_type": "string",
+          "distinct_count": 139907,
+          "distinct_method": "exact_bounded_set",
+          "interpretation": "Bounded key used for counting, overlap tests or aggregate uniqueness checks.",
+          "maximum": null,
+          "minimum": null,
+          "name": "household_id",
+          "non_null_count": 200000,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "parquet_logical_type": "String",
+          "parquet_physical_type": "BYTE_ARRAY",
+          "prefix_counts": [
+            {
+              "count": 109999,
+              "value": "HH"
+            },
+            {
+              "count": 90001,
+              "value": "S0"
+            }
+          ],
+          "role": "identifier",
+          "string_length": {
+            "maximum": 9,
+            "mean": 9.0,
+            "minimum": 9
+          }
+        },
+        "household_role": {
+          "additional_distinct_values": 0,
+          "arrow_type": "string",
+          "cashflow_use": "Descriptive or cohort context; not a direct cash-flow measure.",
+          "dictionary_description": "Role within household. primary head of household. partner spouse/partner. dependent child or dependent. single lives alone.",
+          "dictionary_type": "string",
+          "distinct_count": 4,
+          "distinct_method": "exact",
+          "expected_values_from_dictionary": [
+            "dependent",
+            "partner",
+            "primary",
+            "single"
+          ],
+          "interpretation": "Categorical or descriptive code summarised by exact frequency.",
+          "maximum": null,
+          "minimum": null,
+          "missing_expected_values": [],
+          "name": "household_role",
+          "non_null_count": 200000,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "parquet_logical_type": "String",
+          "parquet_physical_type": "BYTE_ARRAY",
+          "role": "category",
+          "top_values": [
+            {
+              "count": 90001,
+              "value": "single"
+            },
+            {
+              "count": 49906,
+              "value": "partner"
+            },
+            {
+              "count": 49906,
+              "value": "primary"
+            },
+            {
+              "count": 10187,
+              "value": "dependent"
+            }
+          ],
+          "unexpected_values": []
+        },
+        "lang_pref": {
+          "additional_distinct_values": 0,
+          "arrow_type": "string",
+          "cashflow_use": "Descriptive or cohort context; not a direct cash-flow measure.",
+          "dictionary_description": "Preferred language. ET Estonian. EN English. RU Russian.",
+          "dictionary_type": "string",
+          "distinct_count": 3,
+          "distinct_method": "exact",
+          "expected_values_from_dictionary": [
+            "EN",
+            "ET",
+            "RU"
+          ],
+          "interpretation": "Categorical or descriptive code summarised by exact frequency.",
+          "maximum": null,
+          "minimum": null,
+          "missing_expected_values": [],
+          "name": "lang_pref",
+          "non_null_count": 200000,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "parquet_logical_type": "String",
+          "parquet_physical_type": "BYTE_ARRAY",
+          "role": "category",
+          "top_values": [
+            {
+              "count": 122262,
+              "value": "ET"
+            },
+            {
+              "count": 47594,
+              "value": "RU"
+            },
+            {
+              "count": 30144,
+              "value": "EN"
+            }
+          ],
+          "unexpected_values": []
+        },
+        "postal_code": {
+          "arrow_type": "string",
+          "blank_count": 0,
+          "cashflow_use": "Descriptive or cohort context; not a direct cash-flow measure.",
+          "dictionary_description": "5-digit postal code of the customer's registered address.",
+          "dictionary_type": "string",
+          "distinct_count": null,
+          "distinct_method": "deferred_high_cardinality",
+          "interpretation": "Descriptive value whose raw values are suppressed and frequency table is deferred.",
+          "maximum": null,
+          "minimum": null,
+          "name": "postal_code",
+          "non_null_count": 200000,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "parquet_logical_type": "String",
+          "parquet_physical_type": "BYTE_ARRAY",
+          "prefix_counts": [
+            {
+              "count": 83738,
+              "value": "10"
+            },
+            {
+              "count": 42255,
+              "value": "94"
+            },
+            {
+              "count": 28151,
+              "value": "50"
+            },
+            {
+              "count": 19805,
+              "value": "20"
+            },
+            {
+              "count": 14321,
+              "value": "80"
+            },
+            {
+              "count": 11730,
+              "value": "76"
+            }
+          ],
+          "role": "high_cardinality_descriptive",
+          "string_length": {
+            "maximum": 5,
+            "mean": 5.0,
+            "minimum": 5
+          }
+        },
+        "region_cd": {
+          "additional_distinct_values": 0,
+          "arrow_type": "string",
+          "cashflow_use": "Descriptive or cohort context; not a direct cash-flow measure.",
+          "dictionary_description": "Geographic region. TLN Tallinn. TRT Tartu. NRV Narva. PRN Pärnu. RUR Rural. OTH Other.",
+          "dictionary_type": "string",
+          "distinct_count": 6,
+          "distinct_method": "exact",
+          "expected_values_from_dictionary": [
+            "NRV",
+            "OTH",
+            "PRN",
+            "RUR",
+            "TLN",
+            "TRT"
+          ],
+          "interpretation": "Categorical or descriptive code summarised by exact frequency.",
+          "maximum": null,
+          "minimum": null,
+          "missing_expected_values": [],
+          "name": "region_cd",
+          "non_null_count": 200000,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "parquet_logical_type": "String",
+          "parquet_physical_type": "BYTE_ARRAY",
+          "role": "category",
+          "top_values": [
+            {
+              "count": 83738,
+              "value": "TLN"
+            },
+            {
+              "count": 42255,
+              "value": "RUR"
+            },
+            {
+              "count": 28151,
+              "value": "TRT"
+            },
+            {
+              "count": 19805,
+              "value": "NRV"
+            },
+            {
+              "count": 14321,
+              "value": "PRN"
+            },
+            {
+              "count": 11730,
+              "value": "OTH"
+            }
+          ],
+          "unexpected_values": []
+        },
+        "segment": {
+          "additional_distinct_values": 0,
+          "arrow_type": "string",
+          "cashflow_use": "Essential for cohort eligibility; currently contains no SME labels.",
+          "dictionary_description": "Customer segment. Private individual retail clients. SME small and medium enterprises. Corporate large corporations.",
+          "dictionary_type": "string",
+          "distinct_count": 1,
+          "distinct_method": "exact",
+          "expected_values_from_dictionary": [
+            "Corporate",
+            "Private",
+            "SME"
+          ],
+          "interpretation": "Categorical or descriptive code summarised by exact frequency.",
+          "maximum": null,
+          "minimum": null,
+          "missing_expected_values": [
+            "Corporate",
+            "SME"
+          ],
+          "name": "segment",
+          "non_null_count": 200000,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "parquet_logical_type": "String",
+          "parquet_physical_type": "BYTE_ARRAY",
+          "role": "category",
+          "top_values": [
+            {
+              "count": 200000,
+              "value": "Private"
+            }
+          ],
+          "unexpected_values": []
+        },
+        "type_cd": {
+          "additional_distinct_values": 0,
+          "arrow_type": "string",
+          "cashflow_use": "Potential eligibility or temporal context; requires later leakage review.",
+          "dictionary_description": "Legal entity type. H natural person (human). C legal entity (company).",
+          "dictionary_type": "string",
+          "distinct_count": 2,
+          "distinct_method": "exact",
+          "expected_values_from_dictionary": [
+            "C",
+            "H"
+          ],
+          "interpretation": "Categorical or descriptive code summarised by exact frequency.",
+          "maximum": null,
+          "minimum": null,
+          "missing_expected_values": [],
+          "name": "type_cd",
+          "non_null_count": 200000,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "parquet_logical_type": "String",
+          "parquet_physical_type": "BYTE_ARRAY",
+          "role": "category",
+          "top_values": [
+            {
+              "count": 199870,
+              "value": "H"
+            },
+            {
+              "count": 130,
+              "value": "C"
+            }
+          ],
+          "unexpected_values": []
+        }
+      },
+      "composite_key": null,
+      "customer_relationship": null,
+      "data_quality": {
+        "columns_with_nulls": [
+          {
+            "column": "corp_group_id",
+            "null_count": 200000,
+            "null_percentage": 100.0
+          }
+        ],
+        "cross_field_checks": {
+          "birth_or_registration_after_bank_registration": 404
+        },
+        "dictionary_fields_missing_from_schema": [],
+        "dictionary_row_count": 221000,
+        "dictionary_type_mismatches": [
+          {
+            "arrow_type": "int64",
+            "column": "group_head_flg",
+            "comparison": "coarse type families differ",
+            "dictionary_type": "string"
+          }
+        ],
+        "row_count_matches_dictionary": false,
+        "schema_fields_absent_from_dictionary": [],
+        "type_cd_segment_counts": [
+          {
+            "count": 130,
+            "segment": "Private",
+            "type_cd": "C"
+          },
+          {
+            "count": 199870,
+            "segment": "Private",
+            "type_cd": "H"
+          }
+        ],
+        "unexpected_or_missing_dictionary_categories": {
+          "group_head_flg": {
+            "missing": [
+              1
+            ],
+            "unexpected": []
+          },
+          "segment": {
+            "missing": [
+              "Corporate",
+              "SME"
+            ],
+            "unexpected": []
+          }
+        }
+      },
+      "execution": {
+        "batch_size": 65536
+      },
+      "file_name": "customers.parquet",
+      "file_size_bytes": 4227635,
+      "purpose": "One row per customer. Contains demographics, segment, language, region, and household information. 221,000 rows.",
+      "row_count": 200000,
+      "row_group_count": 2,
+      "table_name": "customers"
+    },
+    {
+      "classification": "transaction event history",
+      "column_count": 20,
+      "columns": {
+        "acct_iban": {
+          "arrow_type": "string",
+          "blank_count": 0,
+          "cashflow_use": "Descriptive context only unless later analysis establishes value.",
+          "dictionary_description": "IBAN of the account being debited or credited.",
+          "dictionary_type": "string",
+          "distinct_count": null,
+          "distinct_method": "deferred_high_cardinality",
+          "interpretation": "Identifier-like value. Raw values are suppressed and exact global distinctness is deferred.",
+          "maximum": null,
+          "minimum": null,
+          "name": "acct_iban",
+          "non_null_count": 120926662,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "parquet_logical_type": "String",
+          "parquet_physical_type": "BYTE_ARRAY",
+          "prefix_counts": [
+            {
+              "count": 120926662,
+              "value": "EE"
+            }
+          ],
+          "role": "high_cardinality_identifier",
+          "string_length": {
+            "maximum": 20,
+            "mean": 20.0,
+            "minimum": 20
+          }
+        },
+        "amount_eur": {
+          "arrow_type": "double",
+          "cashflow_use": "Primary monetary measure; direction must come from dc_indicator.",
+          "dictionary_description": "Amount converted to EUR at the applicable exchange rate.",
+          "dictionary_type": "float",
+          "distinct_count": null,
+          "distinct_method": "not_computed_for_continuous_values",
+          "distribution_sample": {
+            "method": "deterministic_systematic_sample",
+            "quantiles": {
+              "p25": 11.02,
+              "p50": 25.7,
+              "p75": 200.0,
+              "p95": 911.7004999999999,
+              "p99": 1573.2625999999987
+            },
+            "sample_size": 100000,
+            "source_non_null_count": 120926662
+          },
+          "interpretation": "Numeric measure summarised with exact extrema and bounded quantile sampling.",
+          "maximum": 80425.58,
+          "minimum": 0.05,
+          "name": "amount_eur",
+          "non_null_count": 120926662,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "numeric_statistics": {
+            "count": 120926662,
+            "mean_streaming": 190.13637970630413,
+            "nan_count": 0,
+            "negative_count": 0,
+            "stddev_streaming": 708.0078800876414,
+            "sum_streaming": 22992557722.6479,
+            "zero_count": 0
+          },
+          "parquet_logical_type": "None",
+          "parquet_physical_type": "DOUBLE",
+          "role": "financial_measure"
+        },
+        "amount_orig": {
+          "arrow_type": "double",
+          "cashflow_use": "Source-currency context; cash-flow target should use documented EUR conversion.",
+          "dictionary_description": "Transaction amount in the original currency (trx_ccy).",
+          "dictionary_type": "float",
+          "distinct_count": null,
+          "distinct_method": "not_computed_for_continuous_values",
+          "distribution_sample": {
+            "method": "deterministic_systematic_sample",
+            "quantiles": {
+              "p25": 12.03,
+              "p50": 27.34,
+              "p75": 213.73,
+              "p95": 928.9314999999997,
+              "p99": 1600.5462999999913
+            },
+            "sample_size": 100000,
+            "source_non_null_count": 120926662
+          },
+          "interpretation": "Numeric measure summarised with exact extrema and bounded quantile sampling.",
+          "maximum": 80425.58,
+          "minimum": 0.6,
+          "name": "amount_orig",
+          "non_null_count": 120926662,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "numeric_statistics": {
+            "count": 120926662,
+            "mean_streaming": 198.2234144212133,
+            "nan_count": 0,
+            "negative_count": 0,
+            "stddev_streaming": 725.1380728372422,
+            "sum_streaming": 23970495836.199986,
+            "zero_count": 0
+          },
+          "parquet_logical_type": "None",
+          "parquet_physical_type": "DOUBLE",
+          "role": "financial_measure"
+        },
+        "book_date": {
+          "arrow_type": "timestamp[ns]",
+          "cashflow_use": "Required time axis for eventual temporal evaluation.",
+          "dictionary_description": "Date the transaction was booked.",
+          "dictionary_type": "date",
+          "distinct_count": 731,
+          "distinct_method": "exact",
+          "interpretation": "Date or timestamp used to assess coverage and temporal consistency.",
+          "maximum": "2025-12-31T00:00:00",
+          "minimum": "2024-01-01T00:00:00",
+          "name": "book_date",
+          "non_null_count": 120926662,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "parquet_logical_type": "Timestamp(isAdjustedToUTC=false, timeUnit=nanoseconds, is_from_converted_type=false, force_set_converted_type=false)",
+          "parquet_physical_type": "INT64",
+          "role": "timestamp"
+        },
+        "book_time": {
+          "arrow_type": "string",
+          "blank_count": 0,
+          "cashflow_use": "Calendar/time attribute; avoid redundant or future-derived features.",
+          "dictionary_description": "Time of day in HH:MM:SS format.",
+          "dictionary_type": "string",
+          "distinct_count": null,
+          "distinct_method": "deferred_high_cardinality",
+          "interpretation": "Descriptive value whose raw values are suppressed and frequency table is deferred.",
+          "maximum": null,
+          "minimum": null,
+          "name": "book_time",
+          "non_null_count": 120926662,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "parquet_logical_type": "String",
+          "parquet_physical_type": "BYTE_ARRAY",
+          "prefix_counts": [
+            {
+              "count": 12472704,
+              "value": "12"
+            },
+            {
+              "count": 9890774,
+              "value": "11"
+            },
+            {
+              "count": 9344619,
+              "value": "13"
+            },
+            {
+              "count": 9229296,
+              "value": "19"
+            },
+            {
+              "count": 8693385,
+              "value": "18"
+            },
+            {
+              "count": 8116318,
+              "value": "08"
+            },
+            {
+              "count": 7859685,
+              "value": "20"
+            },
+            {
+              "count": 6668730,
+              "value": "17"
+            },
+            {
+              "count": 6591341,
+              "value": "07"
+            },
+            {
+              "count": 5833332,
+              "value": "10"
+            },
+            {
+              "count": 5783937,
+              "value": "09"
+            },
+            {
+              "count": 5340039,
+              "value": "21"
+            },
+            {
+              "count": 4727956,
+              "value": "14"
+            },
+            {
+              "count": 4370141,
+              "value": "16"
+            },
+            {
+              "count": 3303022,
+              "value": "06"
+            },
+            {
+              "count": 3189556,
+              "value": "15"
+            },
+            {
+              "count": 2893316,
+              "value": "22"
+            },
+            {
+              "count": 1811232,
+              "value": "23"
+            },
+            {
+              "count": 1144936,
+              "value": "03"
+            },
+            {
+              "count": 1046024,
+              "value": "04"
+            }
+          ],
+          "role": "high_cardinality_descriptive",
+          "string_length": {
+            "maximum": 8,
+            "mean": 8.0,
+            "minimum": 8
+          }
+        },
+        "channel": {
+          "additional_distinct_values": 0,
+          "arrow_type": "string",
+          "cashflow_use": "Potential descriptive context after leakage and availability review.",
+          "dictionary_description": "Channel used. card POS / contactless terminal. online internet banking. mobile mobile app. branch physical branch visit. atm ATM machine.",
+          "dictionary_type": "string",
+          "distinct_count": 5,
+          "distinct_method": "exact",
+          "expected_values_from_dictionary": [
+            "atm",
+            "branch",
+            "card",
+            "mobile",
+            "online"
+          ],
+          "interpretation": "Categorical or descriptive code summarised by exact frequency.",
+          "maximum": null,
+          "minimum": null,
+          "missing_expected_values": [],
+          "name": "channel",
+          "non_null_count": 120926662,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "parquet_logical_type": "String",
+          "parquet_physical_type": "BYTE_ARRAY",
+          "role": "category",
+          "top_values": [
+            {
+              "count": 91917052,
+              "value": "card"
+            },
+            {
+              "count": 22236808,
+              "value": "online"
+            },
+            {
+              "count": 5053578,
+              "value": "mobile"
+            },
+            {
+              "count": 1247613,
+              "value": "branch"
+            },
+            {
+              "count": 471611,
+              "value": "atm"
+            }
+          ],
+          "unexpected_values": []
+        },
+        "client_id_fk": {
+          "arrow_type": "string",
+          "blank_count": 0,
+          "cashflow_use": "Required customer linkage, subject to verified cohort availability.",
+          "dictionary_description": "Customer who owns the account. Joins to customers.client_id.",
+          "dictionary_type": "string",
+          "distinct_count": 200000,
+          "distinct_method": "exact_bounded_set",
+          "interpretation": "Bounded key used for counting, overlap tests or aggregate uniqueness checks.",
+          "maximum": null,
+          "minimum": null,
+          "name": "client_id_fk",
+          "non_null_count": 120926662,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "parquet_logical_type": "String",
+          "parquet_physical_type": "BYTE_ARRAY",
+          "prefix_counts": [
+            {
+              "count": 120926662,
+              "value": "CL"
+            }
+          ],
+          "role": "identifier",
+          "string_length": {
+            "maximum": 9,
+            "mean": 9.0,
+            "minimum": 9
+          }
+        },
+        "counterparty_iban": {
+          "arrow_type": "string",
+          "blank_count": 0,
+          "cashflow_use": "Descriptive context only unless later analysis establishes value.",
+          "dictionary_description": "IBAN of the other party (employer, merchant, transfer recipient, etc.).",
+          "dictionary_type": "string",
+          "distinct_count": null,
+          "distinct_method": "deferred_high_cardinality",
+          "interpretation": "Identifier-like value. Raw values are suppressed and exact global distinctness is deferred.",
+          "maximum": null,
+          "minimum": null,
+          "name": "counterparty_iban",
+          "non_null_count": 120732484,
+          "null_count": 194178,
+          "null_percentage": 0.160575,
+          "nullable": true,
+          "parquet_logical_type": "String",
+          "parquet_physical_type": "BYTE_ARRAY",
+          "prefix_counts": [
+            {
+              "count": 120731995,
+              "value": "EE"
+            },
+            {
+              "count": 489,
+              "value": "XX"
+            }
+          ],
+          "role": "high_cardinality_identifier",
+          "string_length": {
+            "maximum": 21,
+            "mean": 20.00029811363775,
+            "minimum": 19
+          }
+        },
+        "day_in_month": {
+          "additional_distinct_values": 1,
+          "arrow_type": "int64",
+          "cashflow_use": "Calendar/time attribute; avoid redundant or future-derived features.",
+          "dictionary_description": "Day of the month (1–31).",
+          "dictionary_type": "int",
+          "distinct_count": 31,
+          "distinct_method": "exact",
+          "interpretation": "Low-cardinality numeric code or calendar component.",
+          "maximum": 31,
+          "minimum": 1,
+          "name": "day_in_month",
+          "non_null_count": 120926662,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "parquet_logical_type": "Int(bitWidth=64, isSigned=true)",
+          "parquet_physical_type": "INT64",
+          "role": "categorical_numeric",
+          "top_values": [
+            {
+              "count": 5074579,
+              "value": 2
+            },
+            {
+              "count": 5041332,
+              "value": 5
+            },
+            {
+              "count": 4937267,
+              "value": 8
+            },
+            {
+              "count": 4888816,
+              "value": 6
+            },
+            {
+              "count": 4855031,
+              "value": 7
+            },
+            {
+              "count": 4781808,
+              "value": 3
+            },
+            {
+              "count": 4720340,
+              "value": 30
+            },
+            {
+              "count": 4679262,
+              "value": 1
+            },
+            {
+              "count": 4665824,
+              "value": 4
+            },
+            {
+              "count": 4414434,
+              "value": 9
+            },
+            {
+              "count": 4341382,
+              "value": 11
+            },
+            {
+              "count": 4313349,
+              "value": 10
+            },
+            {
+              "count": 4203258,
+              "value": 12
+            },
+            {
+              "count": 4183203,
+              "value": 14
+            },
+            {
+              "count": 4027021,
+              "value": 13
+            },
+            {
+              "count": 3916716,
+              "value": 15
+            },
+            {
+              "count": 3759384,
+              "value": 16
+            },
+            {
+              "count": 3693016,
+              "value": 17
+            },
+            {
+              "count": 3545913,
+              "value": 19
+            },
+            {
+              "count": 3543919,
+              "value": 29
+            },
+            {
+              "count": 3523170,
+              "value": 18
+            },
+            {
+              "count": 3471278,
+              "value": 22
+            },
+            {
+              "count": 3445614,
+              "value": 20
+            },
+            {
+              "count": 3400172,
+              "value": 21
+            },
+            {
+              "count": 3284619,
+              "value": 23
+            },
+            {
+              "count": 3033520,
+              "value": 31
+            },
+            {
+              "count": 2907596,
+              "value": 25
+            },
+            {
+              "count": 2779853,
+              "value": 24
+            },
+            {
+              "count": 2523347,
+              "value": 28
+            },
+            {
+              "count": 2498846,
+              "value": 27
+            }
+          ]
+        },
+        "dc_indicator": {
+          "additional_distinct_values": 0,
+          "arrow_type": "string",
+          "cashflow_use": "Required to distinguish cash inflow from outflow.",
+          "dictionary_description": "Direction. C credit (money in). D debit (money out).",
+          "dictionary_type": "string",
+          "distinct_count": 2,
+          "distinct_method": "exact",
+          "expected_values_from_dictionary": [
+            "C",
+            "D"
+          ],
+          "interpretation": "Categorical or descriptive code summarised by exact frequency.",
+          "maximum": null,
+          "minimum": null,
+          "missing_expected_values": [],
+          "name": "dc_indicator",
+          "non_null_count": 120926662,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "parquet_logical_type": "String",
+          "parquet_physical_type": "BYTE_ARRAY",
+          "role": "category",
+          "top_values": [
+            {
+              "count": 108025210,
+              "value": "D"
+            },
+            {
+              "count": 12901452,
+              "value": "C"
+            }
+          ],
+          "unexpected_values": []
+        },
+        "mcc": {
+          "additional_distinct_values": 150,
+          "arrow_type": "string",
+          "cashflow_use": "Potential descriptive context after leakage and availability review.",
+          "dictionary_description": "Merchant Category Code (ISO 18245). Present on card purchases and subscriptions; null for transfers and salary. Examples: 5411 grocery, 5812 restaurants, 6011 ATM.",
+          "dictionary_type": "string",
+          "distinct_count": 180,
+          "distinct_method": "exact",
+          "interpretation": "Categorical or descriptive code summarised by exact frequency.",
+          "maximum": null,
+          "minimum": null,
+          "name": "mcc",
+          "non_null_count": 96551115,
+          "null_count": 24375547,
+          "null_percentage": 20.157297,
+          "nullable": true,
+          "parquet_logical_type": "String",
+          "parquet_physical_type": "BYTE_ARRAY",
+          "role": "category",
+          "top_values": [
+            {
+              "count": 6749722,
+              "value": "5814"
+            },
+            {
+              "count": 3284263,
+              "value": "5812"
+            },
+            {
+              "count": 2705268,
+              "value": "5815"
+            },
+            {
+              "count": 2203183,
+              "value": "5411"
+            },
+            {
+              "count": 2202294,
+              "value": "7298"
+            },
+            {
+              "count": 2062414,
+              "value": "8398"
+            },
+            {
+              "count": 2053103,
+              "value": "4900"
+            },
+            {
+              "count": 1547261,
+              "value": "5441"
+            },
+            {
+              "count": 1469676,
+              "value": "0742"
+            },
+            {
+              "count": 1312336,
+              "value": "5462"
+            },
+            {
+              "count": 1261145,
+              "value": "5813"
+            },
+            {
+              "count": 1223013,
+              "value": "5722"
+            },
+            {
+              "count": 1128069,
+              "value": "5811"
+            },
+            {
+              "count": 1114370,
+              "value": "5735"
+            },
+            {
+              "count": 1101963,
+              "value": "5499"
+            },
+            {
+              "count": 1072533,
+              "value": "8220"
+            },
+            {
+              "count": 1034724,
+              "value": "5994"
+            },
+            {
+              "count": 1005794,
+              "value": "3502"
+            },
+            {
+              "count": 997649,
+              "value": "4582"
+            },
+            {
+              "count": 981309,
+              "value": "5995"
+            },
+            {
+              "count": 980033,
+              "value": "7231"
+            },
+            {
+              "count": 967227,
+              "value": "5983"
+            },
+            {
+              "count": 922060,
+              "value": "5699"
+            },
+            {
+              "count": 911948,
+              "value": "4813"
+            },
+            {
+              "count": 909384,
+              "value": "7802"
+            },
+            {
+              "count": 896246,
+              "value": "5552"
+            },
+            {
+              "count": 882614,
+              "value": "5599"
+            },
+            {
+              "count": 855745,
+              "value": "5942"
+            },
+            {
+              "count": 854316,
+              "value": "6211"
+            },
+            {
+              "count": 816167,
+              "value": "5641"
+            }
+          ]
+        },
+        "merchant_country": {
+          "additional_distinct_values": 0,
+          "arrow_type": "string",
+          "cashflow_use": "Potential descriptive context after leakage and availability review.",
+          "dictionary_description": "ISO 2-letter country code of the merchant. Most are EE; cross-border transactions show the merchant's actual country.",
+          "dictionary_type": "string",
+          "distinct_count": 14,
+          "distinct_method": "exact",
+          "interpretation": "Categorical or descriptive code summarised by exact frequency.",
+          "maximum": null,
+          "minimum": null,
+          "name": "merchant_country",
+          "non_null_count": 96551115,
+          "null_count": 24375547,
+          "null_percentage": 20.157297,
+          "nullable": true,
+          "parquet_logical_type": "String",
+          "parquet_physical_type": "BYTE_ARRAY",
+          "role": "category",
+          "top_values": [
+            {
+              "count": 69761493,
+              "value": "EE"
+            },
+            {
+              "count": 5747311,
+              "value": "LT"
+            },
+            {
+              "count": 5463403,
+              "value": "FI"
+            },
+            {
+              "count": 4362067,
+              "value": "LV"
+            },
+            {
+              "count": 3536024,
+              "value": "SE"
+            },
+            {
+              "count": 3470899,
+              "value": "PL"
+            },
+            {
+              "count": 2316568,
+              "value": "DE"
+            },
+            {
+              "count": 1892861,
+              "value": "NL"
+            },
+            {
+              "count": 89,
+              "value": "TR"
+            },
+            {
+              "count": 85,
+              "value": "RU"
+            },
+            {
+              "count": 85,
+              "value": "NG"
+            },
+            {
+              "count": 83,
+              "value": "ID"
+            },
+            {
+              "count": 82,
+              "value": "BR"
+            },
+            {
+              "count": 65,
+              "value": "VN"
+            }
+          ]
+        },
+        "month": {
+          "additional_distinct_values": 0,
+          "arrow_type": "int64",
+          "cashflow_use": "Calendar/time attribute; avoid redundant or future-derived features.",
+          "dictionary_description": null,
+          "dictionary_type": null,
+          "distinct_count": 12,
+          "distinct_method": "exact",
+          "interpretation": "Low-cardinality numeric code or calendar component.",
+          "maximum": 12,
+          "minimum": 1,
+          "name": "month",
+          "non_null_count": 120926662,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "parquet_logical_type": "Int(bitWidth=64, isSigned=true)",
+          "parquet_physical_type": "INT64",
+          "role": "categorical_numeric",
+          "top_values": [
+            {
+              "count": 11612973,
+              "value": 12
+            },
+            {
+              "count": 11123230,
+              "value": 8
+            },
+            {
+              "count": 10741713,
+              "value": 6
+            },
+            {
+              "count": 10724900,
+              "value": 7
+            },
+            {
+              "count": 10550025,
+              "value": 11
+            },
+            {
+              "count": 10481539,
+              "value": 10
+            },
+            {
+              "count": 10164447,
+              "value": 9
+            },
+            {
+              "count": 9655466,
+              "value": 5
+            },
+            {
+              "count": 9483993,
+              "value": 4
+            },
+            {
+              "count": 9344271,
+              "value": 3
+            },
+            {
+              "count": 8803267,
+              "value": 2
+            },
+            {
+              "count": 8240838,
+              "value": 1
+            }
+          ]
+        },
+        "period_yy_mm": {
+          "additional_distinct_values": 0,
+          "arrow_type": "string",
+          "cashflow_use": "Calendar/time attribute; avoid redundant or future-derived features.",
+          "dictionary_description": "Year-month period, e.g. 2401 for January 2024. Useful for grouping.",
+          "dictionary_type": "string",
+          "distinct_count": 24,
+          "distinct_method": "exact",
+          "interpretation": "Categorical or descriptive code summarised by exact frequency.",
+          "maximum": null,
+          "minimum": null,
+          "name": "period_yy_mm",
+          "non_null_count": 120926662,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "parquet_logical_type": "String",
+          "parquet_physical_type": "BYTE_ARRAY",
+          "role": "category",
+          "top_values": [
+            {
+              "count": 6297782,
+              "value": "2512"
+            },
+            {
+              "count": 5858699,
+              "value": "2508"
+            },
+            {
+              "count": 5765081,
+              "value": "2511"
+            },
+            {
+              "count": 5741466,
+              "value": "2506"
+            },
+            {
+              "count": 5732833,
+              "value": "2510"
+            },
+            {
+              "count": 5689100,
+              "value": "2507"
+            },
+            {
+              "count": 5649934,
+              "value": "2509"
+            },
+            {
+              "count": 5315191,
+              "value": "2412"
+            },
+            {
+              "count": 5310013,
+              "value": "2503"
+            },
+            {
+              "count": 5264531,
+              "value": "2408"
+            },
+            {
+              "count": 5237426,
+              "value": "2505"
+            },
+            {
+              "count": 5236045,
+              "value": "2504"
+            },
+            {
+              "count": 5035800,
+              "value": "2407"
+            },
+            {
+              "count": 5000247,
+              "value": "2406"
+            },
+            {
+              "count": 4986071,
+              "value": "2502"
+            },
+            {
+              "count": 4959519,
+              "value": "2501"
+            },
+            {
+              "count": 4784944,
+              "value": "2411"
+            },
+            {
+              "count": 4748706,
+              "value": "2410"
+            },
+            {
+              "count": 4514513,
+              "value": "2409"
+            },
+            {
+              "count": 4418040,
+              "value": "2405"
+            },
+            {
+              "count": 4247948,
+              "value": "2404"
+            },
+            {
+              "count": 4034258,
+              "value": "2403"
+            },
+            {
+              "count": 3817196,
+              "value": "2402"
+            },
+            {
+              "count": 3281319,
+              "value": "2401"
+            }
+          ]
+        },
+        "purpose_code": {
+          "additional_distinct_values": 0,
+          "arrow_type": "string",
+          "cashflow_use": "Potential descriptive context after leakage and availability review.",
+          "dictionary_description": "SEPA purpose code (see table below).",
+          "dictionary_type": "string",
+          "distinct_count": 15,
+          "distinct_method": "exact",
+          "expected_values_from_dictionary": [
+            "BENE",
+            "BONU",
+            "CASH",
+            "CHAR",
+            "ELEC",
+            "FEES",
+            "GDDS",
+            "GIFT",
+            "LOAR",
+            "OTHR",
+            "RENT",
+            "SALA",
+            "SAVG",
+            "SSBE",
+            "SUBS",
+            "SUPP",
+            "TAXS"
+          ],
+          "interpretation": "Categorical or descriptive code summarised by exact frequency.",
+          "maximum": null,
+          "minimum": null,
+          "missing_expected_values": [
+            "SSBE",
+            "TAXS"
+          ],
+          "name": "purpose_code",
+          "non_null_count": 120926662,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "parquet_logical_type": "String",
+          "parquet_physical_type": "BYTE_ARRAY",
+          "role": "category",
+          "top_values": [
+            {
+              "count": 91917052,
+              "value": "GDDS"
+            },
+            {
+              "count": 9549608,
+              "value": "ELEC"
+            },
+            {
+              "count": 4162452,
+              "value": "SUBS"
+            },
+            {
+              "count": 3778622,
+              "value": "SUPP"
+            },
+            {
+              "count": 3050844,
+              "value": "RENT"
+            },
+            {
+              "count": 3044450,
+              "value": "SALA"
+            },
+            {
+              "count": 1249991,
+              "value": "BENE"
+            },
+            {
+              "count": 1064536,
+              "value": "OTHR"
+            },
+            {
+              "count": 638096,
+              "value": "GIFT"
+            },
+            {
+              "count": 477530,
+              "value": "LOAR"
+            },
+            {
+              "count": 471611,
+              "value": "CASH"
+            },
+            {
+              "count": 467547,
+              "value": "SAVG"
+            },
+            {
+              "count": 463304,
+              "value": "CHAR"
+            },
+            {
+              "count": 354768,
+              "value": "FEES"
+            },
+            {
+              "count": 236251,
+              "value": "BONU"
+            }
+          ],
+          "unexpected_values": []
+        },
+        "trx_ccy": {
+          "additional_distinct_values": 0,
+          "arrow_type": "string",
+          "cashflow_use": "Source-currency context; cash-flow target should use documented EUR conversion.",
+          "dictionary_description": "Original currency. EUR USD SEK NOK GBP",
+          "dictionary_type": "string",
+          "distinct_count": 5,
+          "distinct_method": "exact",
+          "expected_values_from_dictionary": [
+            "EUR",
+            "GBP",
+            "NOK",
+            "SEK",
+            "USD"
+          ],
+          "interpretation": "Categorical or descriptive code summarised by exact frequency.",
+          "maximum": null,
+          "minimum": null,
+          "missing_expected_values": [],
+          "name": "trx_ccy",
+          "non_null_count": 120926662,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "parquet_logical_type": "String",
+          "parquet_physical_type": "BYTE_ARRAY",
+          "role": "category",
+          "top_values": [
+            {
+              "count": 111771911,
+              "value": "EUR"
+            },
+            {
+              "count": 3141056,
+              "value": "USD"
+            },
+            {
+              "count": 2923467,
+              "value": "SEK"
+            },
+            {
+              "count": 2785897,
+              "value": "NOK"
+            },
+            {
+              "count": 304331,
+              "value": "GBP"
+            }
+          ],
+          "unexpected_values": []
+        },
+        "txn_id": {
+          "arrow_type": "string",
+          "blank_count": 0,
+          "cashflow_use": "Record identifier only; should not become a predictive feature.",
+          "dictionary_description": "Unique transaction identifier, e.g. [identifier example omitted].",
+          "dictionary_type": "string",
+          "distinct_count": null,
+          "distinct_method": "deferred_high_cardinality",
+          "interpretation": "Identifier-like value. Raw values are suppressed and exact global distinctness is deferred.",
+          "maximum": null,
+          "minimum": null,
+          "name": "txn_id",
+          "non_null_count": 120926662,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "parquet_logical_type": "String",
+          "parquet_physical_type": "BYTE_ARRAY",
+          "prefix_counts": [
+            {
+              "count": 120926662,
+              "value": "TX"
+            }
+          ],
+          "role": "high_cardinality_identifier",
+          "string_length": {
+            "maximum": 13,
+            "mean": 13.0,
+            "minimum": 13
+          }
+        },
+        "txn_type": {
+          "additional_distinct_values": 0,
+          "arrow_type": "string",
+          "cashflow_use": "Potential descriptive context after leakage and availability review.",
+          "dictionary_description": "Transaction classification (see table below).",
+          "dictionary_type": "string",
+          "distinct_count": 14,
+          "distinct_method": "exact",
+          "expected_values_from_dictionary": [
+            "allowance_transfer",
+            "bonus",
+            "business_payment",
+            "business_receipt",
+            "card_purchase",
+            "card_refund",
+            "cash_withdrawal",
+            "household_transfer",
+            "internal_transfer",
+            "loan_servicing",
+            "payroll_run",
+            "salary",
+            "savings_sweep",
+            "social_insurance",
+            "subscription",
+            "support_income",
+            "tax_withholding",
+            "utility_bill"
+          ],
+          "interpretation": "Categorical or descriptive code summarised by exact frequency.",
+          "maximum": null,
+          "minimum": null,
+          "missing_expected_values": [
+            "business_payment",
+            "payroll_run",
+            "social_insurance",
+            "tax_withholding"
+          ],
+          "name": "txn_type",
+          "non_null_count": 120926662,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "parquet_logical_type": "String",
+          "parquet_physical_type": "BYTE_ARRAY",
+          "role": "category",
+          "top_values": [
+            {
+              "count": 90618227,
+              "value": "card_purchase"
+            },
+            {
+              "count": 9549608,
+              "value": "utility_bill"
+            },
+            {
+              "count": 4162452,
+              "value": "subscription"
+            },
+            {
+              "count": 3548911,
+              "value": "internal_transfer"
+            },
+            {
+              "count": 3494235,
+              "value": "business_receipt"
+            },
+            {
+              "count": 3044450,
+              "value": "salary"
+            },
+            {
+              "count": 2269405,
+              "value": "household_transfer"
+            },
+            {
+              "count": 1298825,
+              "value": "card_refund"
+            },
+            {
+              "count": 1249991,
+              "value": "support_income"
+            },
+            {
+              "count": 471611,
+              "value": "cash_withdrawal"
+            },
+            {
+              "count": 467547,
+              "value": "savings_sweep"
+            },
+            {
+              "count": 463304,
+              "value": "allowance_transfer"
+            },
+            {
+              "count": 236251,
+              "value": "bonus"
+            },
+            {
+              "count": 51845,
+              "value": "loan_servicing"
+            }
+          ],
+          "unexpected_values": []
+        },
+        "weekday_name": {
+          "additional_distinct_values": 0,
+          "arrow_type": "string",
+          "cashflow_use": "Calendar/time attribute; avoid redundant or future-derived features.",
+          "dictionary_description": "Abbreviated weekday: Mon, Tue, ..., Sun.",
+          "dictionary_type": "string",
+          "distinct_count": 7,
+          "distinct_method": "exact",
+          "expected_values_from_dictionary": [
+            "Fri",
+            "Mon",
+            "Sat",
+            "Sun",
+            "Thu",
+            "Tue",
+            "Wed"
+          ],
+          "interpretation": "Categorical or descriptive code summarised by exact frequency.",
+          "maximum": null,
+          "minimum": null,
+          "missing_expected_values": [],
+          "name": "weekday_name",
+          "non_null_count": 120926662,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "parquet_logical_type": "String",
+          "parquet_physical_type": "BYTE_ARRAY",
+          "role": "category",
+          "top_values": [
+            {
+              "count": 19756412,
+              "value": "Fri"
+            },
+            {
+              "count": 19739280,
+              "value": "Sat"
+            },
+            {
+              "count": 16883951,
+              "value": "Tue"
+            },
+            {
+              "count": 16767421,
+              "value": "Mon"
+            },
+            {
+              "count": 16537233,
+              "value": "Wed"
+            },
+            {
+              "count": 16479418,
+              "value": "Thu"
+            },
+            {
+              "count": 14762947,
+              "value": "Sun"
+            }
+          ],
+          "unexpected_values": []
+        },
+        "year": {
+          "additional_distinct_values": 0,
+          "arrow_type": "int64",
+          "cashflow_use": "Calendar/time attribute; avoid redundant or future-derived features.",
+          "dictionary_description": null,
+          "dictionary_type": null,
+          "distinct_count": 2,
+          "distinct_method": "exact",
+          "interpretation": "Low-cardinality numeric code or calendar component.",
+          "maximum": 2025,
+          "minimum": 2024,
+          "name": "year",
+          "non_null_count": 120926662,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "parquet_logical_type": "Int(bitWidth=64, isSigned=true)",
+          "parquet_physical_type": "INT64",
+          "role": "categorical_numeric",
+          "top_values": [
+            {
+              "count": 66463969,
+              "value": 2025
+            },
+            {
+              "count": 54462693,
+              "value": 2024
+            }
+          ]
+        }
+      },
+      "composite_key": {
+        "columns": [
+          "txn_id"
+        ],
+        "method": "deferred",
+        "reason": "Exact global uniqueness would require retaining approximately 120 million identifier values.",
+        "verified": false
+      },
+      "customer_relationship": {
+        "cardinality": "one customer to many table rows",
+        "data_type_compatible": true,
+        "distinct_orphan_reference_count": 0,
+        "distinct_reference_count": 200000,
+        "matching_distinct_reference_count": 200000,
+        "matching_row_count": 120926662,
+        "null_reference_count": 0,
+        "orphan_count_method": "exact_bounded_set",
+        "orphan_row_count": 0,
+        "reference_count_method": "exact_bounded_set",
+        "referencing_row_count": 120926662,
+        "row_duplication_risk": "Customer joins may multiply rows because each customer can have multiple records.",
+        "source_column": "client_id_fk",
+        "source_table": "transactions",
+        "target_column": "client_id",
+        "target_table": "customers",
+        "verified": true
+      },
+      "data_quality": {
+        "columns_with_nulls": [
+          {
+            "column": "counterparty_iban",
+            "null_count": 194178,
+            "null_percentage": 0.160575
+          },
+          {
+            "column": "mcc",
+            "null_count": 24375547,
+            "null_percentage": 20.157297
+          },
+          {
+            "column": "merchant_country",
+            "null_count": 24375547,
+            "null_percentage": 20.157297
+          }
+        ],
+        "dictionary_fields_missing_from_schema": [],
+        "dictionary_row_count": 151100000,
+        "dictionary_type_mismatches": [],
+        "row_count_matches_dictionary": false,
+        "schema_fields_absent_from_dictionary": [
+          "month",
+          "year"
+        ],
+        "temporal_and_currency_checks": {
+          "book_date_after_documented_range": 0,
+          "book_date_before_documented_range": 0,
+          "book_date_year_month_mismatch": 0,
+          "eur_original_amount_mismatch": 305471
+        },
+        "unexpected_or_missing_dictionary_categories": {
+          "purpose_code": {
+            "missing": [
+              "SSBE",
+              "TAXS"
+            ],
+            "unexpected": []
+          },
+          "txn_type": {
+            "missing": [
+              "business_payment",
+              "payroll_run",
+              "social_insurance",
+              "tax_withholding"
+            ],
+            "unexpected": []
+          }
+        }
+      },
+      "execution": {
+        "batch_size": 65536
+      },
+      "file_name": "transactions.parquet",
+      "file_size_bytes": 3347559295,
+      "purpose": "Every financial event: card purchases, salaries, transfers, bills, and more. Each row is one transaction. 151.1M rows.",
+      "row_count": 120926662,
+      "row_group_count": 989,
+      "table_name": "transactions"
+    },
+    {
+      "classification": "monthly agreement snapshots",
+      "column_count": 9,
+      "columns": {
+        "carrying_amount": {
+          "arrow_type": "double",
+          "cashflow_use": "Potentially useful historical financial context, not a substitute for transaction cash flow.",
+          "dictionary_description": "Book value of the lease on the bank's balance sheet (EUR).",
+          "dictionary_type": "float",
+          "distinct_count": null,
+          "distinct_method": "not_computed_for_continuous_values",
+          "distribution_sample": {
+            "method": "deterministic_systematic_sample",
+            "quantiles": {
+              "p25": 16849.4575,
+              "p50": 25354.055,
+              "p75": 37888.8025,
+              "p95": 67817.188,
+              "p99": 102408.71499999998
+            },
+            "sample_size": 91098,
+            "source_non_null_count": 116660
+          },
+          "interpretation": "Numeric measure summarised with exact extrema and bounded quantile sampling.",
+          "maximum": 255224.67,
+          "minimum": 1700.86,
+          "name": "carrying_amount",
+          "non_null_count": 116660,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "numeric_statistics": {
+            "count": 116660,
+            "mean_streaming": 30307.352918652494,
+            "nan_count": 0,
+            "negative_count": 0,
+            "stddev_streaming": 19908.451994317616,
+            "sum_streaming": 3535655791.49,
+            "zero_count": 0
+          },
+          "parquet_logical_type": "None",
+          "parquet_physical_type": "DOUBLE",
+          "role": "financial_measure"
+        },
+        "client_id_fk": {
+          "arrow_type": "string",
+          "blank_count": 0,
+          "cashflow_use": "Potential contextual linkage to customers; no SME mapping is established.",
+          "dictionary_description": "Customer who holds the lease.",
+          "dictionary_type": "string",
+          "distinct_count": 17898,
+          "distinct_method": "exact_bounded_set",
+          "interpretation": "Bounded key used for counting, overlap tests or aggregate uniqueness checks.",
+          "maximum": null,
+          "minimum": null,
+          "name": "client_id_fk",
+          "non_null_count": 116660,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "parquet_logical_type": "String",
+          "parquet_physical_type": "BYTE_ARRAY",
+          "prefix_counts": [
+            {
+              "count": 116660,
+              "value": "CL"
+            }
+          ],
+          "role": "identifier",
+          "string_length": {
+            "maximum": 9,
+            "mean": 9.0,
+            "minimum": 9
+          }
+        },
+        "lease_ccy": {
+          "additional_distinct_values": 0,
+          "arrow_type": "string",
+          "cashflow_use": "Contextual attribute only; current relevance is unverified.",
+          "dictionary_description": "Currency of the lease contract. EUR USD SEK",
+          "dictionary_type": "string",
+          "distinct_count": 3,
+          "distinct_method": "exact",
+          "expected_values_from_dictionary": [
+            "EUR",
+            "SEK",
+            "USD"
+          ],
+          "interpretation": "Categorical or descriptive code summarised by exact frequency.",
+          "maximum": null,
+          "minimum": null,
+          "missing_expected_values": [],
+          "name": "lease_ccy",
+          "non_null_count": 116660,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "parquet_logical_type": "String",
+          "parquet_physical_type": "BYTE_ARRAY",
+          "role": "category",
+          "top_values": [
+            {
+              "count": 97554,
+              "value": "EUR"
+            },
+            {
+              "count": 12281,
+              "value": "SEK"
+            },
+            {
+              "count": 6825,
+              "value": "USD"
+            }
+          ],
+          "unexpected_values": []
+        },
+        "lease_status": {
+          "additional_distinct_values": 0,
+          "arrow_type": "string",
+          "cashflow_use": "Contextual attribute only; current relevance is unverified.",
+          "dictionary_description": "Current status of the agreement: offer contract proposed but not yet signed. enactment contract signed, disbursement in progress. valid active, payments ongoing. temporary terminated payments paused (e.g. payment holiday). terminated contract ended normally. completely terminated fully settled, no outstanding balance. archived closed and archived.",
+          "dictionary_type": "string",
+          "distinct_count": 7,
+          "distinct_method": "exact",
+          "expected_values_from_dictionary": [
+            "archived",
+            "completely terminated",
+            "enactment",
+            "offer",
+            "temporary terminated",
+            "terminated",
+            "valid"
+          ],
+          "interpretation": "Categorical or descriptive code summarised by exact frequency.",
+          "maximum": null,
+          "minimum": null,
+          "missing_expected_values": [],
+          "name": "lease_status",
+          "non_null_count": 116660,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "parquet_logical_type": "String",
+          "parquet_physical_type": "BYTE_ARRAY",
+          "role": "category",
+          "top_values": [
+            {
+              "count": 42173,
+              "value": "valid"
+            },
+            {
+              "count": 33204,
+              "value": "archived"
+            },
+            {
+              "count": 10753,
+              "value": "offer"
+            },
+            {
+              "count": 9743,
+              "value": "terminated"
+            },
+            {
+              "count": 8635,
+              "value": "completely terminated"
+            },
+            {
+              "count": 6799,
+              "value": "temporary terminated"
+            },
+            {
+              "count": 5353,
+              "value": "enactment"
+            }
+          ],
+          "unexpected_values": []
+        },
+        "month": {
+          "additional_distinct_values": 0,
+          "arrow_type": "int64",
+          "cashflow_use": "Potential as-of-date context only; temporal alignment and leakage must be checked.",
+          "dictionary_description": "Snapshot month (partition key).",
+          "dictionary_type": "string",
+          "distinct_count": 12,
+          "distinct_method": "exact",
+          "interpretation": "Low-cardinality numeric code or calendar component.",
+          "maximum": 12,
+          "minimum": 1,
+          "name": "month",
+          "non_null_count": 116660,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "parquet_logical_type": "Int(bitWidth=64, isSigned=true)",
+          "parquet_physical_type": "INT64",
+          "role": "categorical_numeric",
+          "top_values": [
+            {
+              "count": 11462,
+              "value": 9
+            },
+            {
+              "count": 11264,
+              "value": 10
+            },
+            {
+              "count": 11181,
+              "value": 8
+            },
+            {
+              "count": 10821,
+              "value": 7
+            },
+            {
+              "count": 10607,
+              "value": 11
+            },
+            {
+              "count": 10542,
+              "value": 12
+            },
+            {
+              "count": 10254,
+              "value": 6
+            },
+            {
+              "count": 9676,
+              "value": 5
+            },
+            {
+              "count": 9129,
+              "value": 4
+            },
+            {
+              "count": 8228,
+              "value": 3
+            },
+            {
+              "count": 7233,
+              "value": 2
+            },
+            {
+              "count": 6263,
+              "value": 1
+            }
+          ]
+        },
+        "orig_principal": {
+          "arrow_type": "double",
+          "cashflow_use": "Potentially useful historical financial context, not a substitute for transaction cash flow.",
+          "dictionary_description": "Original loan principal at contract signing (EUR).",
+          "dictionary_type": "float",
+          "distinct_count": null,
+          "distinct_method": "not_computed_for_continuous_values",
+          "distribution_sample": {
+            "method": "deterministic_systematic_sample",
+            "quantiles": {
+              "p25": 18016.68,
+              "p50": 27002.705,
+              "p75": 40468.22,
+              "p95": 71962.75,
+              "p99": 108132.81
+            },
+            "sample_size": 91098,
+            "source_non_null_count": 116660
+          },
+          "interpretation": "Numeric measure summarised with exact extrema and bounded quantile sampling.",
+          "maximum": 269015.85,
+          "minimum": 1820.18,
+          "name": "orig_principal",
+          "non_null_count": 116660,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "numeric_statistics": {
+            "count": 116660,
+            "mean_streaming": 32339.9010294874,
+            "nan_count": 0,
+            "negative_count": 0,
+            "stddev_streaming": 21155.51156935075,
+            "sum_streaming": 3772772854.1,
+            "zero_count": 0
+          },
+          "parquet_logical_type": "None",
+          "parquet_physical_type": "DOUBLE",
+          "role": "financial_measure"
+        },
+        "outstanding_principal": {
+          "arrow_type": "double",
+          "cashflow_use": "Potentially useful historical financial context, not a substitute for transaction cash flow.",
+          "dictionary_description": "Remaining principal balance as of the snapshot date (EUR).",
+          "dictionary_type": "float",
+          "distinct_count": null,
+          "distinct_method": "not_computed_for_continuous_values",
+          "distribution_sample": {
+            "method": "deterministic_systematic_sample",
+            "quantiles": {
+              "p25": 17193.0975,
+              "p50": 25886.585,
+              "p75": 38632.590000000004,
+              "p95": 69152.73,
+              "p99": 104449.58079999994
+            },
+            "sample_size": 91098,
+            "source_non_null_count": 116660
+          },
+          "interpretation": "Numeric measure summarised with exact extrema and bounded quantile sampling.",
+          "maximum": 264628.62,
+          "minimum": 1789.55,
+          "name": "outstanding_principal",
+          "non_null_count": 116660,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "numeric_statistics": {
+            "count": 116660,
+            "mean_streaming": 30926.176853934514,
+            "nan_count": 0,
+            "negative_count": 0,
+            "stddev_streaming": 20304.3373493203,
+            "sum_streaming": 3607847791.78,
+            "zero_count": 0
+          },
+          "parquet_logical_type": "None",
+          "parquet_physical_type": "DOUBLE",
+          "role": "financial_measure"
+        },
+        "snapshot_date": {
+          "arrow_type": "timestamp[us]",
+          "cashflow_use": "Potential as-of-date context only; temporal alignment and leakage must be checked.",
+          "dictionary_description": "Month-end date of this snapshot.",
+          "dictionary_type": "date",
+          "distinct_count": 25,
+          "distinct_method": "exact",
+          "interpretation": "Date or timestamp used to assess coverage and temporal consistency.",
+          "maximum": "2025-12-31T00:00:00",
+          "minimum": "2023-12-31T00:00:00",
+          "name": "snapshot_date",
+          "non_null_count": 116660,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "parquet_logical_type": "Timestamp(isAdjustedToUTC=false, timeUnit=microseconds, is_from_converted_type=false, force_set_converted_type=false)",
+          "parquet_physical_type": "INT64",
+          "role": "timestamp"
+        },
+        "year": {
+          "additional_distinct_values": 0,
+          "arrow_type": "int64",
+          "cashflow_use": "Potential as-of-date context only; temporal alignment and leakage must be checked.",
+          "dictionary_description": "Snapshot year (partition key).",
+          "dictionary_type": "string",
+          "distinct_count": 3,
+          "distinct_method": "exact",
+          "interpretation": "Low-cardinality numeric code or calendar component.",
+          "maximum": 2025,
+          "minimum": 2023,
+          "name": "year",
+          "non_null_count": 116660,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "parquet_logical_type": "Int(bitWidth=64, isSigned=true)",
+          "parquet_physical_type": "INT64",
+          "role": "categorical_numeric",
+          "top_values": [
+            {
+              "count": 73134,
+              "value": 2025
+            },
+            {
+              "count": 43431,
+              "value": 2024
+            },
+            {
+              "count": 95,
+              "value": 2023
+            }
+          ]
+        }
+      },
+      "composite_key": {
+        "columns": [
+          "client_id_fk",
+          "snapshot_date"
+        ],
+        "duplicate_key_row_count": 0,
+        "key_count": 116660,
+        "method": "exact",
+        "nullable_key_row_count": 0,
+        "verified": false,
+        "verified_primary_key": true
+      },
+      "customer_relationship": {
+        "cardinality": "one customer to many table rows",
+        "data_type_compatible": true,
+        "distinct_orphan_reference_count": 0,
+        "distinct_reference_count": 17898,
+        "matching_distinct_reference_count": 17898,
+        "matching_row_count": 116660,
+        "null_reference_count": 0,
+        "orphan_count_method": "exact_bounded_set",
+        "orphan_row_count": 0,
+        "reference_count_method": "exact_bounded_set",
+        "referencing_row_count": 116660,
+        "row_duplication_risk": "Customer joins may multiply rows because each customer can have multiple records.",
+        "source_column": "client_id_fk",
+        "source_table": "leasing_agreements",
+        "target_column": "client_id",
+        "target_table": "customers",
+        "verified": true
+      },
+      "data_quality": {
+        "columns_with_nulls": [],
+        "cross_field_checks": {
+          "date_month_mismatch": 0,
+          "date_year_mismatch": 0
+        },
+        "dictionary_fields_missing_from_schema": [],
+        "dictionary_row_count": 141967,
+        "dictionary_type_mismatches": [
+          {
+            "arrow_type": "int64",
+            "column": "month",
+            "comparison": "coarse type families differ",
+            "dictionary_type": "string"
+          },
+          {
+            "arrow_type": "int64",
+            "column": "year",
+            "comparison": "coarse type families differ",
+            "dictionary_type": "string"
+          }
+        ],
+        "row_count_matches_dictionary": false,
+        "schema_fields_absent_from_dictionary": [],
+        "type_cd_segment_counts": [],
+        "unexpected_or_missing_dictionary_categories": {}
+      },
+      "execution": {
+        "batch_size": 65536
+      },
+      "file_name": "leasing_agreements.parquet",
+      "file_size_bytes": 2075564,
+      "purpose": "Monthly snapshots of leasing and mortgage contracts. Each row represents the state of one agreement at one point in time. 141,967 rows.",
+      "row_count": 116660,
+      "row_group_count": 1,
+      "table_name": "leasing_agreements"
+    },
+    {
+      "classification": "monthly insurance-policy snapshots",
+      "column_count": 8,
+      "columns": {
+        "client_id_fk": {
+          "arrow_type": "string",
+          "blank_count": 0,
+          "cashflow_use": "Potential contextual linkage to customers; no SME mapping is established.",
+          "dictionary_description": "Policyholder.",
+          "dictionary_type": "string",
+          "distinct_count": 43994,
+          "distinct_method": "exact_bounded_set",
+          "interpretation": "Bounded key used for counting, overlap tests or aggregate uniqueness checks.",
+          "maximum": null,
+          "minimum": null,
+          "name": "client_id_fk",
+          "non_null_count": 592381,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "parquet_logical_type": "String",
+          "parquet_physical_type": "BYTE_ARRAY",
+          "prefix_counts": [
+            {
+              "count": 592381,
+              "value": "CL"
+            }
+          ],
+          "role": "identifier",
+          "string_length": {
+            "maximum": 9,
+            "mean": 9.0,
+            "minimum": 9
+          }
+        },
+        "month": {
+          "additional_distinct_values": 0,
+          "arrow_type": "int64",
+          "cashflow_use": "Potential as-of-date context only; temporal alignment and leakage must be checked.",
+          "dictionary_description": "Partition month.",
+          "dictionary_type": "string",
+          "distinct_count": 12,
+          "distinct_method": "exact",
+          "interpretation": "Low-cardinality numeric code or calendar component.",
+          "maximum": 12,
+          "minimum": 1,
+          "name": "month",
+          "non_null_count": 592381,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "parquet_logical_type": "Int(bitWidth=64, isSigned=true)",
+          "parquet_physical_type": "INT64",
+          "role": "categorical_numeric",
+          "top_values": [
+            {
+              "count": 68249,
+              "value": 12
+            },
+            {
+              "count": 65749,
+              "value": 11
+            },
+            {
+              "count": 63811,
+              "value": 10
+            },
+            {
+              "count": 59873,
+              "value": 9
+            },
+            {
+              "count": 55798,
+              "value": 8
+            },
+            {
+              "count": 51776,
+              "value": 7
+            },
+            {
+              "count": 47756,
+              "value": 6
+            },
+            {
+              "count": 43758,
+              "value": 5
+            },
+            {
+              "count": 39825,
+              "value": 4
+            },
+            {
+              "count": 35943,
+              "value": 3
+            },
+            {
+              "count": 31947,
+              "value": 2
+            },
+            {
+              "count": 27896,
+              "value": 1
+            }
+          ]
+        },
+        "next_premium": {
+          "arrow_type": "double",
+          "cashflow_use": "Potentially useful historical financial context, not a substitute for transaction cash flow.",
+          "dictionary_description": "Next premium payment amount (EUR).",
+          "dictionary_type": "float",
+          "distinct_count": null,
+          "distinct_method": "not_computed_for_continuous_values",
+          "distribution_sample": {
+            "method": "deterministic_systematic_sample",
+            "quantiles": {
+              "p25": 0.0,
+              "p50": 0.0,
+              "p75": 18.7425,
+              "p95": 88.65049999999988,
+              "p99": 142.2201999999999
+            },
+            "sample_size": 100000,
+            "source_non_null_count": 592381
+          },
+          "interpretation": "Numeric measure summarised with exact extrema and bounded quantile sampling.",
+          "maximum": 534.71,
+          "minimum": 0.0,
+          "name": "next_premium",
+          "non_null_count": 592381,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "numeric_statistics": {
+            "count": 592381,
+            "mean_streaming": 16.46297960265437,
+            "nan_count": 0,
+            "negative_count": 0,
+            "stddev_streaming": 33.888356804915496,
+            "sum_streaming": 9752356.319999998,
+            "zero_count": 440465
+          },
+          "parquet_logical_type": "None",
+          "parquet_physical_type": "DOUBLE",
+          "role": "financial_measure"
+        },
+        "policy_ccy": {
+          "additional_distinct_values": 0,
+          "arrow_type": "string",
+          "cashflow_use": "Contextual attribute only; current relevance is unverified.",
+          "dictionary_description": "Policy currency. EUR USD",
+          "dictionary_type": "string",
+          "distinct_count": 2,
+          "distinct_method": "exact",
+          "expected_values_from_dictionary": [
+            "EUR",
+            "USD"
+          ],
+          "interpretation": "Categorical or descriptive code summarised by exact frequency.",
+          "maximum": null,
+          "minimum": null,
+          "missing_expected_values": [],
+          "name": "policy_ccy",
+          "non_null_count": 592381,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "parquet_logical_type": "String",
+          "parquet_physical_type": "BYTE_ARRAY",
+          "role": "category",
+          "top_values": [
+            {
+              "count": 563276,
+              "value": "EUR"
+            },
+            {
+              "count": 29105,
+              "value": "USD"
+            }
+          ],
+          "unexpected_values": []
+        },
+        "policy_status": {
+          "additional_distinct_values": 0,
+          "arrow_type": "string",
+          "cashflow_use": "Contextual attribute only; current relevance is unverified.",
+          "dictionary_description": "Estonian regulatory status codes: ALG initial / pending activation. REGTUD registered, active policy. MAKSEOOT premium due / awaiting payment. JOUS in-force, current. KATK suspended (e.g. non-payment). LOPET terminated by policyholder. LOPPKAES terminated by expiry. LOPPSURM terminated by death (claim paid). ANULL annulled / voided.",
+          "dictionary_type": "string",
+          "distinct_count": 9,
+          "distinct_method": "exact",
+          "expected_values_from_dictionary": [
+            "ALG",
+            "ANULL",
+            "JOUS",
+            "KATK",
+            "LOPET",
+            "LOPPKAES",
+            "LOPPSURM",
+            "MAKSEOOT",
+            "REGTUD"
+          ],
+          "interpretation": "Categorical or descriptive code summarised by exact frequency.",
+          "maximum": null,
+          "minimum": null,
+          "missing_expected_values": [],
+          "name": "policy_status",
+          "non_null_count": 592381,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "parquet_logical_type": "String",
+          "parquet_physical_type": "BYTE_ARRAY",
+          "role": "category",
+          "top_values": [
+            {
+              "count": 387568,
+              "value": "LOPET"
+            },
+            {
+              "count": 94910,
+              "value": "JOUS"
+            },
+            {
+              "count": 52897,
+              "value": "ANULL"
+            },
+            {
+              "count": 11630,
+              "value": "LOPPSURM"
+            },
+            {
+              "count": 11611,
+              "value": "LOPPKAES"
+            },
+            {
+              "count": 11576,
+              "value": "KATK"
+            },
+            {
+              "count": 10705,
+              "value": "MAKSEOOT"
+            },
+            {
+              "count": 7996,
+              "value": "REGTUD"
+            },
+            {
+              "count": 3488,
+              "value": "ALG"
+            }
+          ],
+          "unexpected_values": []
+        },
+        "snapshot_date": {
+          "arrow_type": "timestamp[us]",
+          "cashflow_use": "Potential as-of-date context only; temporal alignment and leakage must be checked.",
+          "dictionary_description": "Month-end date of this snapshot.",
+          "dictionary_type": "date",
+          "distinct_count": 25,
+          "distinct_method": "exact",
+          "interpretation": "Date or timestamp used to assess coverage and temporal consistency.",
+          "maximum": "2025-12-31T00:00:00",
+          "minimum": "2023-12-31T00:00:00",
+          "name": "snapshot_date",
+          "non_null_count": 592381,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "parquet_logical_type": "Timestamp(isAdjustedToUTC=false, timeUnit=microseconds, is_from_converted_type=false, force_set_converted_type=false)",
+          "parquet_physical_type": "INT64",
+          "role": "timestamp"
+        },
+        "sum_insured": {
+          "arrow_type": "double",
+          "cashflow_use": "Potentially useful historical financial context, not a substitute for transaction cash flow.",
+          "dictionary_description": "Total insured amount (EUR).",
+          "dictionary_type": "float",
+          "distinct_count": null,
+          "distinct_method": "not_computed_for_continuous_values",
+          "distribution_sample": {
+            "method": "deterministic_systematic_sample",
+            "quantiles": {
+              "p25": 42443.12,
+              "p50": 59562.8,
+              "p75": 83274.57,
+              "p95": 134410.42,
+              "p99": 187622.35
+            },
+            "sample_size": 100000,
+            "source_non_null_count": 592381
+          },
+          "interpretation": "Numeric measure summarised with exact extrema and bounded quantile sampling.",
+          "maximum": 446436.59,
+          "minimum": 6069.11,
+          "name": "sum_insured",
+          "non_null_count": 592381,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "numeric_statistics": {
+            "count": 592381,
+            "mean_streaming": 67692.05124644442,
+            "nan_count": 0,
+            "negative_count": 0,
+            "stddev_streaming": 36005.42100773189,
+            "sum_streaming": 40099485009.41999,
+            "zero_count": 0
+          },
+          "parquet_logical_type": "None",
+          "parquet_physical_type": "DOUBLE",
+          "role": "financial_measure"
+        },
+        "year": {
+          "additional_distinct_values": 0,
+          "arrow_type": "int64",
+          "cashflow_use": "Potential as-of-date context only; temporal alignment and leakage must be checked.",
+          "dictionary_description": "Partition year.",
+          "dictionary_type": "string",
+          "distinct_count": 3,
+          "distinct_method": "exact",
+          "interpretation": "Low-cardinality numeric code or calendar component.",
+          "maximum": 2025,
+          "minimum": 2023,
+          "name": "year",
+          "non_null_count": 592381,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "parquet_logical_type": "Int(bitWidth=64, isSigned=true)",
+          "parquet_physical_type": "INT64",
+          "role": "categorical_numeric",
+          "top_values": [
+            {
+              "count": 437370,
+              "value": 2025
+            },
+            {
+              "count": 154535,
+              "value": 2024
+            },
+            {
+              "count": 476,
+              "value": 2023
+            }
+          ]
+        }
+      },
+      "composite_key": {
+        "columns": [
+          "client_id_fk",
+          "snapshot_date"
+        ],
+        "duplicate_key_row_count": 3,
+        "key_count": 592378,
+        "method": "exact",
+        "nullable_key_row_count": 0,
+        "verified": false,
+        "verified_primary_key": false
+      },
+      "customer_relationship": {
+        "cardinality": "one customer to many table rows",
+        "data_type_compatible": true,
+        "distinct_orphan_reference_count": 0,
+        "distinct_reference_count": 43994,
+        "matching_distinct_reference_count": 43994,
+        "matching_row_count": 592381,
+        "null_reference_count": 0,
+        "orphan_count_method": "exact_bounded_set",
+        "orphan_row_count": 0,
+        "reference_count_method": "exact_bounded_set",
+        "referencing_row_count": 592381,
+        "row_duplication_risk": "Customer joins may multiply rows because each customer can have multiple records.",
+        "source_column": "client_id_fk",
+        "source_table": "life_insurance",
+        "target_column": "client_id",
+        "target_table": "customers",
+        "verified": true
+      },
+      "data_quality": {
+        "columns_with_nulls": [],
+        "cross_field_checks": {
+          "date_month_mismatch": 0,
+          "date_year_mismatch": 0
+        },
+        "dictionary_fields_missing_from_schema": [],
+        "dictionary_row_count": 606089,
+        "dictionary_type_mismatches": [
+          {
+            "arrow_type": "int64",
+            "column": "month",
+            "comparison": "coarse type families differ",
+            "dictionary_type": "string"
+          },
+          {
+            "arrow_type": "int64",
+            "column": "year",
+            "comparison": "coarse type families differ",
+            "dictionary_type": "string"
+          }
+        ],
+        "row_count_matches_dictionary": false,
+        "schema_fields_absent_from_dictionary": [],
+        "type_cd_segment_counts": [],
+        "unexpected_or_missing_dictionary_categories": {}
+      },
+      "execution": {
+        "batch_size": 65536
+      },
+      "file_name": "life_insurance.parquet",
+      "file_size_bytes": 4479430,
+      "purpose": "Monthly snapshots of life insurance policies. 606,089 rows.",
+      "row_count": 592381,
+      "row_group_count": 6,
+      "table_name": "life_insurance"
+    },
+    {
+      "classification": "monthly insurance-policy snapshots",
+      "column_count": 8,
+      "columns": {
+        "agreement_status": {
+          "additional_distinct_values": 0,
+          "arrow_type": "int64",
+          "cashflow_use": "Contextual attribute only; current relevance is unverified.",
+          "dictionary_description": "Numeric status: -1 cancelled / surrendered. 0 inactive / pending. 1 active, in force. 2 claim in progress.",
+          "dictionary_type": "string",
+          "distinct_count": 4,
+          "distinct_method": "exact",
+          "expected_values_from_dictionary": [
+            -1,
+            0,
+            1,
+            2
+          ],
+          "interpretation": "Low-cardinality numeric code or calendar component.",
+          "maximum": 2,
+          "minimum": -1,
+          "missing_expected_values": [],
+          "name": "agreement_status",
+          "non_null_count": 1012945,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "parquet_logical_type": "Int(bitWidth=64, isSigned=true)",
+          "parquet_physical_type": "INT64",
+          "role": "categorical_numeric",
+          "top_values": [
+            {
+              "count": 810369,
+              "value": 0
+            },
+            {
+              "count": 121673,
+              "value": 1
+            },
+            {
+              "count": 50784,
+              "value": -1
+            },
+            {
+              "count": 30119,
+              "value": 2
+            }
+          ],
+          "unexpected_values": []
+        },
+        "client_id_fk": {
+          "arrow_type": "string",
+          "blank_count": 0,
+          "cashflow_use": "Potential contextual linkage to customers; no SME mapping is established.",
+          "dictionary_description": "Policyholder.",
+          "dictionary_type": "string",
+          "distinct_count": 69886,
+          "distinct_method": "exact_bounded_set",
+          "interpretation": "Bounded key used for counting, overlap tests or aggregate uniqueness checks.",
+          "maximum": null,
+          "minimum": null,
+          "name": "client_id_fk",
+          "non_null_count": 1012945,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "parquet_logical_type": "String",
+          "parquet_physical_type": "BYTE_ARRAY",
+          "prefix_counts": [
+            {
+              "count": 1012945,
+              "value": "CL"
+            }
+          ],
+          "role": "identifier",
+          "string_length": {
+            "maximum": 9,
+            "mean": 9.0,
+            "minimum": 9
+          }
+        },
+        "cover_type_cd": {
+          "additional_distinct_values": 0,
+          "arrow_type": "string",
+          "cashflow_use": "Contextual attribute only; current relevance is unverified.",
+          "dictionary_description": "Coverage type. E endowment (savings-linked). P pure protection.",
+          "dictionary_type": "string",
+          "distinct_count": 2,
+          "distinct_method": "exact",
+          "expected_values_from_dictionary": [
+            "E",
+            "P"
+          ],
+          "interpretation": "Categorical or descriptive code summarised by exact frequency.",
+          "maximum": null,
+          "minimum": null,
+          "missing_expected_values": [],
+          "name": "cover_type_cd",
+          "non_null_count": 1012945,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "parquet_logical_type": "String",
+          "parquet_physical_type": "BYTE_ARRAY",
+          "role": "category",
+          "top_values": [
+            {
+              "count": 627421,
+              "value": "E"
+            },
+            {
+              "count": 385524,
+              "value": "P"
+            }
+          ],
+          "unexpected_values": []
+        },
+        "month": {
+          "additional_distinct_values": 0,
+          "arrow_type": "int64",
+          "cashflow_use": "Potential as-of-date context only; temporal alignment and leakage must be checked.",
+          "dictionary_description": "Partition month.",
+          "dictionary_type": "string",
+          "distinct_count": 12,
+          "distinct_method": "exact",
+          "interpretation": "Low-cardinality numeric code or calendar component.",
+          "maximum": 12,
+          "minimum": 1,
+          "name": "month",
+          "non_null_count": 1012945,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "parquet_logical_type": "Int(bitWidth=64, isSigned=true)",
+          "parquet_physical_type": "INT64",
+          "role": "categorical_numeric",
+          "top_values": [
+            {
+              "count": 112549,
+              "value": 12
+            },
+            {
+              "count": 108258,
+              "value": 11
+            },
+            {
+              "count": 104648,
+              "value": 10
+            },
+            {
+              "count": 101148,
+              "value": 9
+            },
+            {
+              "count": 97572,
+              "value": 8
+            },
+            {
+              "count": 90781,
+              "value": 7
+            },
+            {
+              "count": 83743,
+              "value": 6
+            },
+            {
+              "count": 76764,
+              "value": 5
+            },
+            {
+              "count": 69836,
+              "value": 4
+            },
+            {
+              "count": 62884,
+              "value": 3
+            },
+            {
+              "count": 55893,
+              "value": 2
+            },
+            {
+              "count": 48869,
+              "value": 1
+            }
+          ]
+        },
+        "premium_eur": {
+          "arrow_type": "double",
+          "cashflow_use": "Potentially useful historical financial context, not a substitute for transaction cash flow.",
+          "dictionary_description": "Monthly premium (EUR).",
+          "dictionary_type": "float",
+          "distinct_count": null,
+          "distinct_method": "not_computed_for_continuous_values",
+          "distribution_sample": {
+            "method": "deterministic_systematic_sample",
+            "quantiles": {
+              "p25": 22.88,
+              "p50": 30.02,
+              "p75": 39.31,
+              "p95": 57.96049999999988,
+              "p99": 75.92009999999995
+            },
+            "sample_size": 100000,
+            "source_non_null_count": 1012945
+          },
+          "interpretation": "Numeric measure summarised with exact extrema and bounded quantile sampling.",
+          "maximum": 193.14,
+          "minimum": 4.74,
+          "name": "premium_eur",
+          "non_null_count": 1012945,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "numeric_statistics": {
+            "count": 1012945,
+            "mean_streaming": 32.44793879233325,
+            "nan_count": 0,
+            "negative_count": 0,
+            "stddev_streaming": 13.515055424044755,
+            "sum_streaming": 32867977.360000003,
+            "zero_count": 0
+          },
+          "parquet_logical_type": "None",
+          "parquet_physical_type": "DOUBLE",
+          "role": "financial_measure"
+        },
+        "snapshot_date": {
+          "arrow_type": "timestamp[us]",
+          "cashflow_use": "Potential as-of-date context only; temporal alignment and leakage must be checked.",
+          "dictionary_description": "Month-end snapshot date.",
+          "dictionary_type": "date",
+          "distinct_count": 25,
+          "distinct_method": "exact",
+          "interpretation": "Date or timestamp used to assess coverage and temporal consistency.",
+          "maximum": "2025-12-31T00:00:00",
+          "minimum": "2023-12-31T00:00:00",
+          "name": "snapshot_date",
+          "non_null_count": 1012945,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "parquet_logical_type": "Timestamp(isAdjustedToUTC=false, timeUnit=microseconds, is_from_converted_type=false, force_set_converted_type=false)",
+          "parquet_physical_type": "INT64",
+          "role": "timestamp"
+        },
+        "surrender_value_eur": {
+          "arrow_type": "double",
+          "cashflow_use": "Potentially useful historical financial context, not a substitute for transaction cash flow.",
+          "dictionary_description": "Cash surrender value accumulated (EUR). Grows over time for endowment policies.",
+          "dictionary_type": "float",
+          "distinct_count": null,
+          "distinct_method": "not_computed_for_continuous_values",
+          "distribution_sample": {
+            "method": "deterministic_systematic_sample",
+            "quantiles": {
+              "p25": 1230.1425,
+              "p50": 1906.05,
+              "p75": 2991.58,
+              "p95": 5786.630999999993,
+              "p99": 9411.172999999999
+            },
+            "sample_size": 100000,
+            "source_non_null_count": 1012945
+          },
+          "interpretation": "Numeric measure summarised with exact extrema and bounded quantile sampling.",
+          "maximum": 40680.84,
+          "minimum": 95.69,
+          "name": "surrender_value_eur",
+          "non_null_count": 1012945,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "numeric_statistics": {
+            "count": 1012945,
+            "mean_streaming": 2402.5685672864765,
+            "nan_count": 0,
+            "negative_count": 0,
+            "stddev_streaming": 1806.1509784678287,
+            "sum_streaming": 2433669817.39,
+            "zero_count": 0
+          },
+          "parquet_logical_type": "None",
+          "parquet_physical_type": "DOUBLE",
+          "role": "financial_measure"
+        },
+        "year": {
+          "additional_distinct_values": 0,
+          "arrow_type": "int64",
+          "cashflow_use": "Potential as-of-date context only; temporal alignment and leakage must be checked.",
+          "dictionary_description": "Partition year.",
+          "dictionary_type": "string",
+          "distinct_count": 3,
+          "distinct_method": "exact",
+          "interpretation": "Low-cardinality numeric code or calendar component.",
+          "maximum": 2025,
+          "minimum": 2023,
+          "name": "year",
+          "non_null_count": 1012945,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "parquet_logical_type": "Int(bitWidth=64, isSigned=true)",
+          "parquet_physical_type": "INT64",
+          "role": "categorical_numeric",
+          "top_values": [
+            {
+              "count": 740546,
+              "value": 2025
+            },
+            {
+              "count": 271591,
+              "value": 2024
+            },
+            {
+              "count": 808,
+              "value": 2023
+            }
+          ]
+        }
+      },
+      "composite_key": {
+        "columns": [
+          "client_id_fk",
+          "snapshot_date"
+        ],
+        "duplicate_key_row_count": null,
+        "key_count": null,
+        "method": "deferred",
+        "nullable_key_row_count": null,
+        "reason": "Exact composite-key state would exceed the configured bounded in-memory limit.",
+        "verified": false
+      },
+      "customer_relationship": {
+        "cardinality": "one customer to many table rows",
+        "data_type_compatible": true,
+        "distinct_orphan_reference_count": 0,
+        "distinct_reference_count": 69886,
+        "matching_distinct_reference_count": 69886,
+        "matching_row_count": 1012945,
+        "null_reference_count": 0,
+        "orphan_count_method": "exact_bounded_set",
+        "orphan_row_count": 0,
+        "reference_count_method": "exact_bounded_set",
+        "referencing_row_count": 1012945,
+        "row_duplication_risk": "Customer joins may multiply rows because each customer can have multiple records.",
+        "source_column": "client_id_fk",
+        "source_table": "property_insurance",
+        "target_column": "client_id",
+        "target_table": "customers",
+        "verified": true
+      },
+      "data_quality": {
+        "columns_with_nulls": [],
+        "cross_field_checks": {
+          "date_month_mismatch": 0,
+          "date_year_mismatch": 0
+        },
+        "dictionary_fields_missing_from_schema": [],
+        "dictionary_row_count": 1071805,
+        "dictionary_type_mismatches": [
+          {
+            "arrow_type": "int64",
+            "column": "agreement_status",
+            "comparison": "coarse type families differ",
+            "dictionary_type": "string"
+          },
+          {
+            "arrow_type": "int64",
+            "column": "month",
+            "comparison": "coarse type families differ",
+            "dictionary_type": "string"
+          },
+          {
+            "arrow_type": "int64",
+            "column": "year",
+            "comparison": "coarse type families differ",
+            "dictionary_type": "string"
+          }
+        ],
+        "row_count_matches_dictionary": false,
+        "schema_fields_absent_from_dictionary": [],
+        "type_cd_segment_counts": [],
+        "unexpected_or_missing_dictionary_categories": {}
+      },
+      "execution": {
+        "batch_size": 65536
+      },
+      "file_name": "property_insurance.parquet",
+      "file_size_bytes": 11558891,
+      "purpose": "Monthly snapshots of property (non-life) insurance policies. 1,071,805 rows.",
+      "row_count": 1012945,
+      "row_group_count": 9,
+      "table_name": "property_insurance"
+    },
+    {
+      "classification": "periodic pension contribution records",
+      "column_count": 7,
+      "columns": {
+        "client_id_fk": {
+          "arrow_type": "string",
+          "blank_count": 0,
+          "cashflow_use": "Potential contextual linkage to customers; no SME mapping is established.",
+          "dictionary_description": "Account holder.",
+          "dictionary_type": "string",
+          "distinct_count": 123585,
+          "distinct_method": "exact_bounded_set",
+          "interpretation": "Bounded key used for counting, overlap tests or aggregate uniqueness checks.",
+          "maximum": null,
+          "minimum": null,
+          "name": "client_id_fk",
+          "non_null_count": 2966040,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "parquet_logical_type": "String",
+          "parquet_physical_type": "BYTE_ARRAY",
+          "prefix_counts": [
+            {
+              "count": 2966040,
+              "value": "CL"
+            }
+          ],
+          "role": "identifier",
+          "string_length": {
+            "maximum": 9,
+            "mean": 9.0,
+            "minimum": 9
+          }
+        },
+        "contrib_date": {
+          "arrow_type": "timestamp[us]",
+          "cashflow_use": "Potential as-of-date context only; temporal alignment and leakage must be checked.",
+          "dictionary_description": "Contribution month-end date.",
+          "dictionary_type": "date",
+          "distinct_count": 25,
+          "distinct_method": "exact",
+          "interpretation": "Date or timestamp used to assess coverage and temporal consistency.",
+          "maximum": "2025-12-31T00:00:00",
+          "minimum": "2023-12-31T00:00:00",
+          "name": "contrib_date",
+          "non_null_count": 2966040,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "parquet_logical_type": "Timestamp(isAdjustedToUTC=false, timeUnit=microseconds, is_from_converted_type=false, force_set_converted_type=false)",
+          "parquet_physical_type": "INT64",
+          "role": "timestamp"
+        },
+        "contrib_status": {
+          "additional_distinct_values": 0,
+          "arrow_type": "string",
+          "cashflow_use": "Contextual attribute only; current relevance is unverified.",
+          "dictionary_description": "active regular contributions. stopped contributions suspended. Empty string for initial state.",
+          "dictionary_type": "string",
+          "distinct_count": 3,
+          "distinct_method": "exact",
+          "interpretation": "Categorical or descriptive code summarised by exact frequency.",
+          "maximum": null,
+          "minimum": null,
+          "name": "contrib_status",
+          "non_null_count": 2966040,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "parquet_logical_type": "String",
+          "parquet_physical_type": "BYTE_ARRAY",
+          "role": "category",
+          "top_values": [
+            {
+              "count": 2350432,
+              "value": "active"
+            },
+            {
+              "count": 577473,
+              "value": ""
+            },
+            {
+              "count": 38135,
+              "value": "stopped"
+            }
+          ]
+        },
+        "fund_code": {
+          "additional_distinct_values": 0,
+          "arrow_type": "string",
+          "cashflow_use": "Contextual attribute only; current relevance is unverified.",
+          "dictionary_description": "Selected pension fund: PEN-A conservative (bonds). PEN-B balanced. PEN-C growth (equities). PEN-D aggressive growth. PEN-E index-tracking.",
+          "dictionary_type": "string",
+          "distinct_count": 5,
+          "distinct_method": "exact",
+          "expected_values_from_dictionary": [
+            "PEN-A",
+            "PEN-B",
+            "PEN-C",
+            "PEN-D",
+            "PEN-E"
+          ],
+          "interpretation": "Categorical or descriptive code summarised by exact frequency.",
+          "maximum": null,
+          "minimum": null,
+          "missing_expected_values": [],
+          "name": "fund_code",
+          "non_null_count": 2966040,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "parquet_logical_type": "String",
+          "parquet_physical_type": "BYTE_ARRAY",
+          "role": "category",
+          "top_values": [
+            {
+              "count": 797088,
+              "value": "PEN-B"
+            },
+            {
+              "count": 748848,
+              "value": "PEN-A"
+            },
+            {
+              "count": 593232,
+              "value": "PEN-C"
+            },
+            {
+              "count": 472560,
+              "value": "PEN-D"
+            },
+            {
+              "count": 354312,
+              "value": "PEN-E"
+            }
+          ],
+          "unexpected_values": []
+        },
+        "month": {
+          "additional_distinct_values": 0,
+          "arrow_type": "int64",
+          "cashflow_use": "Potential as-of-date context only; temporal alignment and leakage must be checked.",
+          "dictionary_description": "Partition month.",
+          "dictionary_type": "string",
+          "distinct_count": 12,
+          "distinct_method": "exact",
+          "interpretation": "Low-cardinality numeric code or calendar component.",
+          "maximum": 12,
+          "minimum": 1,
+          "name": "month",
+          "non_null_count": 2966040,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "parquet_logical_type": "Int(bitWidth=64, isSigned=true)",
+          "parquet_physical_type": "INT64",
+          "role": "categorical_numeric",
+          "top_values": [
+            {
+              "count": 249329,
+              "value": 12
+            },
+            {
+              "count": 246999,
+              "value": 3
+            },
+            {
+              "count": 246999,
+              "value": 6
+            },
+            {
+              "count": 246995,
+              "value": 7
+            },
+            {
+              "count": 246980,
+              "value": 2
+            },
+            {
+              "count": 246978,
+              "value": 11
+            },
+            {
+              "count": 246974,
+              "value": 4
+            },
+            {
+              "count": 246971,
+              "value": 10
+            },
+            {
+              "count": 246964,
+              "value": 5
+            },
+            {
+              "count": 246955,
+              "value": 8
+            },
+            {
+              "count": 246951,
+              "value": 9
+            },
+            {
+              "count": 246945,
+              "value": 1
+            }
+          ]
+        },
+        "unit_qty": {
+          "arrow_type": "double",
+          "cashflow_use": "Contextual attribute only; current relevance is unverified.",
+          "dictionary_description": "Cumulative fund units held.",
+          "dictionary_type": "float",
+          "distinct_count": null,
+          "distinct_method": "not_computed_for_continuous_values",
+          "distribution_sample": {
+            "method": "deterministic_systematic_sample",
+            "quantiles": {
+              "p25": 8.49485,
+              "p50": 13.2391,
+              "p75": 17.643225,
+              "p95": 25.360024999999993,
+              "p99": 32.38394699999997
+            },
+            "sample_size": 100000,
+            "source_non_null_count": 2966040
+          },
+          "interpretation": "Numeric measure summarised with exact extrema and bounded quantile sampling.",
+          "maximum": 107.1164,
+          "minimum": 0.0,
+          "name": "unit_qty",
+          "non_null_count": 2966040,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "numeric_statistics": {
+            "count": 2966040,
+            "mean_streaming": 12.53711057406508,
+            "nan_count": 0,
+            "negative_count": 0,
+            "stddev_streaming": 8.183825385578531,
+            "sum_streaming": 37185571.44709999,
+            "zero_count": 615608
+          },
+          "parquet_logical_type": "None",
+          "parquet_physical_type": "DOUBLE",
+          "role": "numeric_measure"
+        },
+        "year": {
+          "additional_distinct_values": 0,
+          "arrow_type": "int64",
+          "cashflow_use": "Potential as-of-date context only; temporal alignment and leakage must be checked.",
+          "dictionary_description": "Partition year.",
+          "dictionary_type": "string",
+          "distinct_count": 3,
+          "distinct_method": "exact",
+          "interpretation": "Low-cardinality numeric code or calendar component.",
+          "maximum": 2025,
+          "minimum": 2023,
+          "name": "year",
+          "non_null_count": 2966040,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "parquet_logical_type": "Int(bitWidth=64, isSigned=true)",
+          "parquet_physical_type": "INT64",
+          "role": "categorical_numeric",
+          "top_values": [
+            {
+              "count": 1481834,
+              "value": 2024
+            },
+            {
+              "count": 1481834,
+              "value": 2025
+            },
+            {
+              "count": 2372,
+              "value": 2023
+            }
+          ]
+        }
+      },
+      "composite_key": {
+        "columns": [
+          "client_id_fk",
+          "contrib_date"
+        ],
+        "duplicate_key_row_count": null,
+        "key_count": null,
+        "method": "deferred",
+        "nullable_key_row_count": null,
+        "reason": "Exact composite-key state would exceed the configured bounded in-memory limit.",
+        "verified": false
+      },
+      "customer_relationship": {
+        "cardinality": "one customer to many table rows",
+        "data_type_compatible": true,
+        "distinct_orphan_reference_count": 0,
+        "distinct_reference_count": 123585,
+        "matching_distinct_reference_count": 123585,
+        "matching_row_count": 2966040,
+        "null_reference_count": 0,
+        "orphan_count_method": "exact_bounded_set",
+        "orphan_row_count": 0,
+        "reference_count_method": "exact_bounded_set",
+        "referencing_row_count": 2966040,
+        "row_duplication_risk": "Customer joins may multiply rows because each customer can have multiple records.",
+        "source_column": "client_id_fk",
+        "source_table": "pension",
+        "target_column": "client_id",
+        "target_table": "customers",
+        "verified": true
+      },
+      "data_quality": {
+        "columns_with_nulls": [],
+        "cross_field_checks": {
+          "date_month_mismatch": 0,
+          "date_year_mismatch": 0
+        },
+        "dictionary_fields_missing_from_schema": [],
+        "dictionary_row_count": 2966040,
+        "dictionary_type_mismatches": [
+          {
+            "arrow_type": "int64",
+            "column": "month",
+            "comparison": "coarse type families differ",
+            "dictionary_type": "string"
+          },
+          {
+            "arrow_type": "int64",
+            "column": "year",
+            "comparison": "coarse type families differ",
+            "dictionary_type": "string"
+          }
+        ],
+        "row_count_matches_dictionary": true,
+        "schema_fields_absent_from_dictionary": [],
+        "type_cd_segment_counts": [],
+        "unexpected_or_missing_dictionary_categories": {}
+      },
+      "execution": {
+        "batch_size": 65536
+      },
+      "file_name": "pension.parquet",
+      "file_size_bytes": 27708082,
+      "purpose": "Monthly pension fund contribution records. 2,966,040 rows.",
+      "row_count": 2966040,
+      "row_group_count": 25,
+      "table_name": "pension"
+    },
+    {
+      "classification": "monthly positive-balance snapshots",
+      "column_count": 8,
+      "columns": {
+        "acct_ccy": {
+          "additional_distinct_values": 0,
+          "arrow_type": "string",
+          "cashflow_use": "Contextual attribute only; current relevance is unverified.",
+          "dictionary_description": "Account currency. EUR USD SEK NOK",
+          "dictionary_type": "string",
+          "distinct_count": 4,
+          "distinct_method": "exact",
+          "expected_values_from_dictionary": [
+            "EUR",
+            "NOK",
+            "SEK",
+            "USD"
+          ],
+          "interpretation": "Categorical or descriptive code summarised by exact frequency.",
+          "maximum": null,
+          "minimum": null,
+          "missing_expected_values": [],
+          "name": "acct_ccy",
+          "non_null_count": 4561521,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "parquet_logical_type": "String",
+          "parquet_physical_type": "BYTE_ARRAY",
+          "role": "category",
+          "top_values": [
+            {
+              "count": 4285032,
+              "value": "EUR"
+            },
+            {
+              "count": 94720,
+              "value": "NOK"
+            },
+            {
+              "count": 91272,
+              "value": "USD"
+            },
+            {
+              "count": 90497,
+              "value": "SEK"
+            }
+          ],
+          "unexpected_values": []
+        },
+        "avg_balance_eur": {
+          "arrow_type": "double",
+          "cashflow_use": "Potentially useful historical financial context, not a substitute for transaction cash flow.",
+          "dictionary_description": "Average daily balance for the month (EUR). Used for interest calculations.",
+          "dictionary_type": "float",
+          "distinct_count": null,
+          "distinct_method": "not_computed_for_continuous_values",
+          "distribution_sample": {
+            "method": "deterministic_systematic_sample",
+            "quantiles": {
+              "p25": 4165.23125,
+              "p50": 12862.0975,
+              "p75": 29641.7575,
+              "p95": 71187.23674999997,
+              "p99": 121700.39214999983
+            },
+            "sample_size": 100000,
+            "source_non_null_count": 4561521
+          },
+          "interpretation": "Numeric measure summarised with exact extrema and bounded quantile sampling.",
+          "maximum": 509341.575,
+          "minimum": 0.0,
+          "name": "avg_balance_eur",
+          "non_null_count": 4561521,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "numeric_statistics": {
+            "count": 4561521,
+            "mean_streaming": 24073.989038303243,
+            "nan_count": 0,
+            "negative_count": 0,
+            "stddev_streaming": 28342.45874129988,
+            "sum_streaming": 109814006551.99005,
+            "zero_count": 20261
+          },
+          "parquet_logical_type": "None",
+          "parquet_physical_type": "DOUBLE",
+          "role": "financial_measure"
+        },
+        "avg_interest_base_eur": {
+          "arrow_type": "double",
+          "cashflow_use": "Potentially useful historical financial context, not a substitute for transaction cash flow.",
+          "dictionary_description": "Interest-bearing balance after deducting activity penalties (EUR). Reflects the effective base the bank uses for margin calculations.",
+          "dictionary_type": "float",
+          "distinct_count": null,
+          "distinct_method": "not_computed_for_continuous_values",
+          "distribution_sample": {
+            "method": "deterministic_systematic_sample",
+            "quantiles": {
+              "p25": 4102.619787702494,
+              "p50": 12779.89842386746,
+              "p75": 29585.396052046373,
+              "p95": 71144.1039898937,
+              "p99": 121580.01934990773
+            },
+            "sample_size": 100000,
+            "source_non_null_count": 4561521
+          },
+          "interpretation": "Numeric measure summarised with exact extrema and bounded quantile sampling.",
+          "maximum": 504352.12072223006,
+          "minimum": 0.0,
+          "name": "avg_interest_base_eur",
+          "non_null_count": 4561521,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "numeric_statistics": {
+            "count": 4561521,
+            "mean_streaming": 24002.57175513065,
+            "nan_count": 0,
+            "negative_count": 0,
+            "stddev_streaming": 28328.363194974278,
+            "sum_streaming": 109488235115.03532,
+            "zero_count": 20261
+          },
+          "parquet_logical_type": "None",
+          "parquet_physical_type": "DOUBLE",
+          "role": "financial_measure"
+        },
+        "client_id_fk": {
+          "arrow_type": "string",
+          "blank_count": 0,
+          "cashflow_use": "Potential contextual linkage to customers; no SME mapping is established.",
+          "dictionary_description": "Account holder.",
+          "dictionary_type": "string",
+          "distinct_count": 199734,
+          "distinct_method": "exact_bounded_set",
+          "interpretation": "Bounded key used for counting, overlap tests or aggregate uniqueness checks.",
+          "maximum": null,
+          "minimum": null,
+          "name": "client_id_fk",
+          "non_null_count": 4561521,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "parquet_logical_type": "String",
+          "parquet_physical_type": "BYTE_ARRAY",
+          "prefix_counts": [
+            {
+              "count": 4561521,
+              "value": "CL"
+            }
+          ],
+          "role": "identifier",
+          "string_length": {
+            "maximum": 9,
+            "mean": 9.0,
+            "minimum": 9
+          }
+        },
+        "end_balance_eur": {
+          "arrow_type": "double",
+          "cashflow_use": "Potentially useful historical financial context, not a substitute for transaction cash flow.",
+          "dictionary_description": "End-of-month balance (EUR).",
+          "dictionary_type": "float",
+          "distinct_count": null,
+          "distinct_method": "not_computed_for_continuous_values",
+          "distribution_sample": {
+            "method": "deterministic_systematic_sample",
+            "quantiles": {
+              "p25": 4625.5525,
+              "p50": 13731.6,
+              "p75": 30960.405,
+              "p95": 73536.27349999995,
+              "p99": 125780.17349999979
+            },
+            "sample_size": 100000,
+            "source_non_null_count": 4561521
+          },
+          "interpretation": "Numeric measure summarised with exact extrema and bounded quantile sampling.",
+          "maximum": 529041.54,
+          "minimum": 0.010000000000104592,
+          "name": "end_balance_eur",
+          "non_null_count": 4561521,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "numeric_statistics": {
+            "count": 4561521,
+            "mean_streaming": 25067.449858354266,
+            "nan_count": 0,
+            "negative_count": 0,
+            "stddev_streaming": 29117.96639262842,
+            "sum_streaming": 114345698945.33002,
+            "zero_count": 0
+          },
+          "parquet_logical_type": "None",
+          "parquet_physical_type": "DOUBLE",
+          "role": "financial_measure"
+        },
+        "month": {
+          "additional_distinct_values": 0,
+          "arrow_type": "int64",
+          "cashflow_use": "Potential as-of-date context only; temporal alignment and leakage must be checked.",
+          "dictionary_description": "Partition month.",
+          "dictionary_type": "string",
+          "distinct_count": 12,
+          "distinct_method": "exact",
+          "interpretation": "Low-cardinality numeric code or calendar component.",
+          "maximum": 12,
+          "minimum": 1,
+          "name": "month",
+          "non_null_count": 4561521,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "parquet_logical_type": "Int(bitWidth=64, isSigned=true)",
+          "parquet_physical_type": "INT64",
+          "role": "categorical_numeric",
+          "top_values": [
+            {
+              "count": 382860,
+              "value": 12
+            },
+            {
+              "count": 380292,
+              "value": 5
+            },
+            {
+              "count": 380243,
+              "value": 11
+            },
+            {
+              "count": 380134,
+              "value": 1
+            },
+            {
+              "count": 380016,
+              "value": 6
+            },
+            {
+              "count": 379989,
+              "value": 10
+            },
+            {
+              "count": 379977,
+              "value": 2
+            },
+            {
+              "count": 379953,
+              "value": 4
+            },
+            {
+              "count": 379784,
+              "value": 9
+            },
+            {
+              "count": 379753,
+              "value": 3
+            },
+            {
+              "count": 379456,
+              "value": 7
+            },
+            {
+              "count": 379064,
+              "value": 8
+            }
+          ]
+        },
+        "month_end": {
+          "arrow_type": "timestamp[us]",
+          "cashflow_use": "Potential as-of-date context only; temporal alignment and leakage must be checked.",
+          "dictionary_description": "Last day of the month.",
+          "dictionary_type": "date",
+          "distinct_count": 24,
+          "distinct_method": "exact",
+          "interpretation": "Date or timestamp used to assess coverage and temporal consistency.",
+          "maximum": "2025-12-31T00:00:00",
+          "minimum": "2024-01-31T00:00:00",
+          "name": "month_end",
+          "non_null_count": 4561521,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "parquet_logical_type": "Timestamp(isAdjustedToUTC=false, timeUnit=microseconds, is_from_converted_type=false, force_set_converted_type=false)",
+          "parquet_physical_type": "INT64",
+          "role": "timestamp"
+        },
+        "year": {
+          "additional_distinct_values": 0,
+          "arrow_type": "int64",
+          "cashflow_use": "Potential as-of-date context only; temporal alignment and leakage must be checked.",
+          "dictionary_description": "Partition year.",
+          "dictionary_type": "string",
+          "distinct_count": 2,
+          "distinct_method": "exact",
+          "interpretation": "Low-cardinality numeric code or calendar component.",
+          "maximum": 2025,
+          "minimum": 2024,
+          "name": "year",
+          "non_null_count": 4561521,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "parquet_logical_type": "Int(bitWidth=64, isSigned=true)",
+          "parquet_physical_type": "INT64",
+          "role": "categorical_numeric",
+          "top_values": [
+            {
+              "count": 2285678,
+              "value": 2025
+            },
+            {
+              "count": 2275843,
+              "value": 2024
+            }
+          ]
+        }
+      },
+      "composite_key": {
+        "columns": [
+          "client_id_fk",
+          "month_end"
+        ],
+        "duplicate_key_row_count": null,
+        "key_count": null,
+        "method": "deferred",
+        "nullable_key_row_count": null,
+        "reason": "Exact composite-key state would exceed the configured bounded in-memory limit.",
+        "verified": false
+      },
+      "customer_relationship": {
+        "cardinality": "one customer to many table rows",
+        "data_type_compatible": true,
+        "distinct_orphan_reference_count": 0,
+        "distinct_reference_count": 199734,
+        "matching_distinct_reference_count": 199734,
+        "matching_row_count": 4561521,
+        "null_reference_count": 0,
+        "orphan_count_method": "exact_bounded_set",
+        "orphan_row_count": 0,
+        "reference_count_method": "exact_bounded_set",
+        "referencing_row_count": 4561521,
+        "row_duplication_risk": "Customer joins may multiply rows because each customer can have multiple records.",
+        "source_column": "client_id_fk",
+        "source_table": "margin_assets",
+        "target_column": "client_id",
+        "target_table": "customers",
+        "verified": true
+      },
+      "data_quality": {
+        "columns_with_nulls": [],
+        "cross_field_checks": {
+          "date_month_mismatch": 0,
+          "date_year_mismatch": 0
+        },
+        "dictionary_fields_missing_from_schema": [],
+        "dictionary_row_count": 4591506,
+        "dictionary_type_mismatches": [
+          {
+            "arrow_type": "int64",
+            "column": "month",
+            "comparison": "coarse type families differ",
+            "dictionary_type": "string"
+          },
+          {
+            "arrow_type": "int64",
+            "column": "year",
+            "comparison": "coarse type families differ",
+            "dictionary_type": "string"
+          }
+        ],
+        "row_count_matches_dictionary": false,
+        "schema_fields_absent_from_dictionary": [],
+        "type_cd_segment_counts": [],
+        "unexpected_or_missing_dictionary_categories": {}
+      },
+      "execution": {
+        "batch_size": 65536
+      },
+      "file_name": "margin_assets.parquet",
+      "file_size_bytes": 112363012,
+      "purpose": "Monthly balance snapshots for accounts in a positive (asset) position. One row per customer per month where the end balance is positive. 4,591,506 rows.",
+      "row_count": 4561521,
+      "row_group_count": 58,
+      "table_name": "margin_assets"
+    },
+    {
+      "classification": "monthly liability-balance snapshots",
+      "column_count": 8,
+      "columns": {
+        "avg_balance_eur": {
+          "arrow_type": "double",
+          "cashflow_use": "Potentially useful historical financial context, not a substitute for transaction cash flow.",
+          "dictionary_description": "Average liability balance for the month (EUR).",
+          "dictionary_type": "float",
+          "distinct_count": null,
+          "distinct_method": "not_computed_for_continuous_values",
+          "distribution_sample": {
+            "method": "deterministic_systematic_sample",
+            "quantiles": {
+              "p25": 477.68250000000006,
+              "p50": 1221.049999999999,
+              "p75": 2850.6375,
+              "p95": 8066.38275,
+              "p99": 14319.208099999989
+            },
+            "sample_size": 100000,
+            "source_non_null_count": 238478
+          },
+          "interpretation": "Numeric measure summarised with exact extrema and bounded quantile sampling.",
+          "maximum": 41187.58500000001,
+          "minimum": 0.009999999999763531,
+          "name": "avg_balance_eur",
+          "non_null_count": 238478,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "numeric_statistics": {
+            "count": 238478,
+            "mean_streaming": 2370.9868992527613,
+            "nan_count": 0,
+            "negative_count": 0,
+            "stddev_streaming": 3092.3579190688138,
+            "sum_streaming": 565428213.76,
+            "zero_count": 0
+          },
+          "parquet_logical_type": "None",
+          "parquet_physical_type": "DOUBLE",
+          "role": "financial_measure"
+        },
+        "avg_interest_base_eur": {
+          "arrow_type": "double",
+          "cashflow_use": "Potentially useful historical financial context, not a substitute for transaction cash flow.",
+          "dictionary_description": "Interest-bearing liability base (EUR).",
+          "dictionary_type": "float",
+          "distinct_count": null,
+          "distinct_method": "not_computed_for_continuous_values",
+          "distribution_sample": {
+            "method": "deterministic_systematic_sample",
+            "quantiles": {
+              "p25": 489.1630791607648,
+              "p50": 1257.9396384914885,
+              "p75": 2904.339994649979,
+              "p95": 8142.583569806015,
+              "p99": 14373.49906377846
+            },
+            "sample_size": 100000,
+            "source_non_null_count": 238478
+          },
+          "interpretation": "Numeric measure summarised with exact extrema and bounded quantile sampling.",
+          "maximum": 41697.8232067154,
+          "minimum": 0.012356701177905523,
+          "name": "avg_interest_base_eur",
+          "non_null_count": 238478,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "numeric_statistics": {
+            "count": 238478,
+            "mean_streaming": 2405.421178570799,
+            "nan_count": 0,
+            "negative_count": 0,
+            "stddev_streaming": 3113.6517527227506,
+            "sum_streaming": 573640031.823207,
+            "zero_count": 0
+          },
+          "parquet_logical_type": "None",
+          "parquet_physical_type": "DOUBLE",
+          "role": "financial_measure"
+        },
+        "client_id_fk": {
+          "arrow_type": "string",
+          "blank_count": 0,
+          "cashflow_use": "Potential contextual linkage to customers; no SME mapping is established.",
+          "dictionary_description": "Account holder.",
+          "dictionary_type": "string",
+          "distinct_count": 37234,
+          "distinct_method": "exact_bounded_set",
+          "interpretation": "Bounded key used for counting, overlap tests or aggregate uniqueness checks.",
+          "maximum": null,
+          "minimum": null,
+          "name": "client_id_fk",
+          "non_null_count": 238478,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "parquet_logical_type": "String",
+          "parquet_physical_type": "BYTE_ARRAY",
+          "prefix_counts": [
+            {
+              "count": 238478,
+              "value": "CL"
+            }
+          ],
+          "role": "identifier",
+          "string_length": {
+            "maximum": 9,
+            "mean": 9.0,
+            "minimum": 9
+          }
+        },
+        "contract_ccy": {
+          "additional_distinct_values": 0,
+          "arrow_type": "string",
+          "cashflow_use": "Contextual attribute only; current relevance is unverified.",
+          "dictionary_description": "Contract currency. EUR USD SEK NOK",
+          "dictionary_type": "string",
+          "distinct_count": 4,
+          "distinct_method": "exact",
+          "expected_values_from_dictionary": [
+            "EUR",
+            "NOK",
+            "SEK",
+            "USD"
+          ],
+          "interpretation": "Categorical or descriptive code summarised by exact frequency.",
+          "maximum": null,
+          "minimum": null,
+          "missing_expected_values": [],
+          "name": "contract_ccy",
+          "non_null_count": 238478,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "parquet_logical_type": "String",
+          "parquet_physical_type": "BYTE_ARRAY",
+          "role": "category",
+          "top_values": [
+            {
+              "count": 224711,
+              "value": "EUR"
+            },
+            {
+              "count": 4872,
+              "value": "USD"
+            },
+            {
+              "count": 4567,
+              "value": "SEK"
+            },
+            {
+              "count": 4328,
+              "value": "NOK"
+            }
+          ],
+          "unexpected_values": []
+        },
+        "end_balance_eur": {
+          "arrow_type": "double",
+          "cashflow_use": "Potentially useful historical financial context, not a substitute for transaction cash flow.",
+          "dictionary_description": "End-of-month outstanding liability (EUR, positive number).",
+          "dictionary_type": "float",
+          "distinct_count": null,
+          "distinct_method": "not_computed_for_continuous_values",
+          "distribution_sample": {
+            "method": "deterministic_systematic_sample",
+            "quantiles": {
+              "p25": 577.9274999999996,
+              "p50": 1449.6699999999996,
+              "p75": 3168.8375000000015,
+              "p95": 8434.683,
+              "p99": 14831.01529999997
+            },
+            "sample_size": 100000,
+            "source_non_null_count": 238478
+          },
+          "interpretation": "Numeric measure summarised with exact extrema and bounded quantile sampling.",
+          "maximum": 44792.82,
+          "minimum": 9.094947017729282e-13,
+          "name": "end_balance_eur",
+          "non_null_count": 238478,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "numeric_statistics": {
+            "count": 238478,
+            "mean_streaming": 2601.7104000788336,
+            "nan_count": 0,
+            "negative_count": 0,
+            "stddev_streaming": 3205.817210825557,
+            "sum_streaming": 620450692.7900001,
+            "zero_count": 0
+          },
+          "parquet_logical_type": "None",
+          "parquet_physical_type": "DOUBLE",
+          "role": "financial_measure"
+        },
+        "month": {
+          "additional_distinct_values": 0,
+          "arrow_type": "int64",
+          "cashflow_use": "Potential as-of-date context only; temporal alignment and leakage must be checked.",
+          "dictionary_description": "Partition month.",
+          "dictionary_type": "string",
+          "distinct_count": 12,
+          "distinct_method": "exact",
+          "interpretation": "Low-cardinality numeric code or calendar component.",
+          "maximum": 12,
+          "minimum": 1,
+          "name": "month",
+          "non_null_count": 238478,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "parquet_logical_type": "Int(bitWidth=64, isSigned=true)",
+          "parquet_physical_type": "INT64",
+          "role": "categorical_numeric",
+          "top_values": [
+            {
+              "count": 20936,
+              "value": 8
+            },
+            {
+              "count": 20544,
+              "value": 7
+            },
+            {
+              "count": 20247,
+              "value": 3
+            },
+            {
+              "count": 20216,
+              "value": 9
+            },
+            {
+              "count": 20047,
+              "value": 4
+            },
+            {
+              "count": 20023,
+              "value": 2
+            },
+            {
+              "count": 20011,
+              "value": 10
+            },
+            {
+              "count": 19984,
+              "value": 6
+            },
+            {
+              "count": 19865,
+              "value": 1
+            },
+            {
+              "count": 19757,
+              "value": 11
+            },
+            {
+              "count": 19708,
+              "value": 5
+            },
+            {
+              "count": 17140,
+              "value": 12
+            }
+          ]
+        },
+        "month_end": {
+          "arrow_type": "timestamp[us]",
+          "cashflow_use": "Potential as-of-date context only; temporal alignment and leakage must be checked.",
+          "dictionary_description": "Last day of the month.",
+          "dictionary_type": "date",
+          "distinct_count": 24,
+          "distinct_method": "exact",
+          "interpretation": "Date or timestamp used to assess coverage and temporal consistency.",
+          "maximum": "2025-12-31T00:00:00",
+          "minimum": "2024-01-31T00:00:00",
+          "name": "month_end",
+          "non_null_count": 238478,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "parquet_logical_type": "Timestamp(isAdjustedToUTC=false, timeUnit=microseconds, is_from_converted_type=false, force_set_converted_type=false)",
+          "parquet_physical_type": "INT64",
+          "role": "timestamp"
+        },
+        "year": {
+          "additional_distinct_values": 0,
+          "arrow_type": "int64",
+          "cashflow_use": "Potential as-of-date context only; temporal alignment and leakage must be checked.",
+          "dictionary_description": "Partition year.",
+          "dictionary_type": "string",
+          "distinct_count": 2,
+          "distinct_method": "exact",
+          "interpretation": "Low-cardinality numeric code or calendar component.",
+          "maximum": 2025,
+          "minimum": 2024,
+          "name": "year",
+          "non_null_count": 238478,
+          "null_count": 0,
+          "null_percentage": 0.0,
+          "nullable": true,
+          "parquet_logical_type": "Int(bitWidth=64, isSigned=true)",
+          "parquet_physical_type": "INT64",
+          "role": "categorical_numeric",
+          "top_values": [
+            {
+              "count": 124157,
+              "value": 2024
+            },
+            {
+              "count": 114321,
+              "value": 2025
+            }
+          ]
+        }
+      },
+      "composite_key": {
+        "columns": [
+          "client_id_fk",
+          "month_end"
+        ],
+        "duplicate_key_row_count": 0,
+        "key_count": 238478,
+        "method": "exact",
+        "nullable_key_row_count": 0,
+        "verified": false,
+        "verified_primary_key": true
+      },
+      "customer_relationship": {
+        "cardinality": "one customer to many table rows",
+        "data_type_compatible": true,
+        "distinct_orphan_reference_count": 0,
+        "distinct_reference_count": 37234,
+        "matching_distinct_reference_count": 37234,
+        "matching_row_count": 238478,
+        "null_reference_count": 0,
+        "orphan_count_method": "exact_bounded_set",
+        "orphan_row_count": 0,
+        "reference_count_method": "exact_bounded_set",
+        "referencing_row_count": 238478,
+        "row_duplication_risk": "Customer joins may multiply rows because each customer can have multiple records.",
+        "source_column": "client_id_fk",
+        "source_table": "margin_liabilities",
+        "target_column": "client_id",
+        "target_table": "customers",
+        "verified": true
+      },
+      "data_quality": {
+        "columns_with_nulls": [],
+        "cross_field_checks": {
+          "date_month_mismatch": 0,
+          "date_year_mismatch": 0
+        },
+        "dictionary_fields_missing_from_schema": [],
+        "dictionary_row_count": 714413,
+        "dictionary_type_mismatches": [
+          {
+            "arrow_type": "int64",
+            "column": "month",
+            "comparison": "coarse type families differ",
+            "dictionary_type": "string"
+          },
+          {
+            "arrow_type": "int64",
+            "column": "year",
+            "comparison": "coarse type families differ",
+            "dictionary_type": "string"
+          }
+        ],
+        "row_count_matches_dictionary": false,
+        "schema_fields_absent_from_dictionary": [],
+        "type_cd_segment_counts": [],
+        "unexpected_or_missing_dictionary_categories": {}
+      },
+      "execution": {
+        "batch_size": 65536
+      },
+      "file_name": "margin_liabilities.parquet",
+      "file_size_bytes": 6016103,
+      "purpose": "Monthly balance snapshots for accounts in a negative (liability / overdraft) position. Same structure as margin_assets but for customers who owe money. 714,413 rows.",
+      "row_count": 238478,
+      "row_group_count": 4,
+      "table_name": "margin_liabilities"
+    }
+  ],
+  "task_2b_metadata_report": "parquet_inventory_summary.json"
+}
