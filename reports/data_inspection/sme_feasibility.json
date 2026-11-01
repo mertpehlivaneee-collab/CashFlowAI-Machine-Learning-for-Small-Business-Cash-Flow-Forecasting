@@ -1,0 +1,98 @@
+{
+  "conclusion": {
+    "identifiable_sme_customers_found": false,
+    "material_dataset_limitation": true,
+    "sme_selection_status": "not_performed",
+    "transaction_linkage_status": "not_tested_no_identifiable_sme_customers"
+  },
+  "customer_segment_reconciliation": {
+    "all_documented_values_observed": false,
+    "all_observed_values_documented": true,
+    "customer_count_matches": false,
+    "missing_documented_values": [
+      "Corporate",
+      "SME"
+    ],
+    "null_segments_agree": true,
+    "segment_counts_match": false,
+    "unexpected_observed_values": []
+  },
+  "dataset_name": "student_export",
+  "dictionary_claims": {
+    "documented_customer_count": 221000,
+    "documented_segment_counts": {
+      "Corporate": 1000,
+      "Private": 200000,
+      "SME": 20000
+    },
+    "documented_segment_labels": [
+      "Private",
+      "SME",
+      "Corporate"
+    ],
+    "documented_sme_customer_count": 20000,
+    "source": "DATA_DICTIONARY.html",
+    "status": "dictionary_claim_not_verified"
+  },
+  "inspection_mode": "focused_record_level_read_only",
+  "limitations": [
+    "Only customer identifier and segment columns were scanned for the customer feasibility result.",
+    "Dictionary claims are kept separate from verified record aggregates.",
+    "No SME selection, cleaning, aggregation, feature engineering, model training, or transaction export was performed.",
+    "Transactions were not opened because no identifiable SME customer was found."
+  ],
+  "metadata_report": "parquet_inventory_summary.json",
+  "report_schema_version": "1.0",
+  "selected_columns": {
+    "customer": {
+      "identifier": "client_id",
+      "segment": "segment"
+    },
+    "evidence": {
+      "amount": "Task 2B schema column 'amount_eur' matched dictionary description: Amount converted to EUR at the applicable exchange rate.",
+      "customer_identifier": "Task 2B schema column 'client_id' matched dictionary description: Unique customer identifier, e.g. [identifier example omitted]. Used as the join key to all other tables via client_id_fk.",
+      "customer_reference": "Task 2B schema column 'client_id_fk' matched dictionary description: Customer who owns the account. Joins to customers.client_id.",
+      "customer_segment": "Task 2B schema column 'segment' matched dictionary description: Customer segment. Private individual retail clients. SME small and medium enterprises. Corporate large corporations.",
+      "date": "Task 2B schema column 'book_date' matched dictionary description: Date the transaction was booked.",
+      "direction": "Task 2B schema column 'dc_indicator' matched dictionary description: Direction. C credit (money in). D debit (money out).",
+      "transaction_id": "Task 2B schema column 'txn_id' matched dictionary description: Unique transaction identifier, e.g. [identifier example omitted]."
+    },
+    "transaction": {
+      "amount": "amount_eur",
+      "customer_reference": "client_id_fk",
+      "date": "book_date",
+      "direction": "dc_indicator",
+      "transaction_id": "txn_id"
+    }
+  },
+  "task": "2C-1",
+  "transaction_feasibility": {
+    "metadata_context": {
+      "metadata_row_count": 120926662,
+      "transaction_file_present": true
+    },
+    "reason": "No row in customers.parquet has an exact segment label of SME, so there is no defensible SME identifier set for a transaction filter.",
+    "smallest_justified_next_diagnostic": "Confirm the dataset export version and completeness with the source provider. Customers.parquet contains 200,000 Private customers but no documented SME or Corporate labels. Scanning transactions cannot recover a missing customer segment label.",
+    "status": "not_tested_no_identifiable_sme_customers",
+    "transaction_file_opened": false
+  },
+  "verified_findings": {
+    "actual_customer_count": 200000,
+    "identifier_blank_count": 0,
+    "identifier_duplicate_row_count": 0,
+    "identifier_is_unique": true,
+    "identifier_non_null_count": 200000,
+    "identifier_null_count": 0,
+    "identifier_unique_non_null_count": 200000,
+    "null_segment_count": 0,
+    "segment_counts": [
+      {
+        "count": 200000,
+        "value": "Private"
+      }
+    ],
+    "sme_labelled_customer_rows": 0,
+    "sme_rows_with_missing_identifier": 0,
+    "sme_unique_identifier_count": 0
+  }
+}

@@ -86,6 +86,19 @@ summary. The full technical JSON remains local because its exhaustive
 row-group statistics make it unsuitable for a normal source commit. It does
 not load tables or row groups, use pandas, or scan transaction records.
 
+## SME feasibility check
+
+Run the focused customer-segment and conditional transaction-linkage check:
+
+```powershell
+.\.venv\Scripts\python.exe -B scripts\check_sme_feasibility.py
+```
+
+The script scans only the required customer columns. It scans transaction
+columns in bounded batches only when identifiable SME-labeled customers exist.
+Reports contain aggregate values only and no customer identifiers or
+transaction records.
+
 ## Dependencies
 
 - `pyarrow==23.0.1` — planned for read-only Parquet metadata inspection in a
