@@ -28,12 +28,34 @@ The current analytical scope is personal bank-transaction cash flow:
 - Eligible records are Private customers only.
 - The target is next-week net cash flow in EUR, defined as credits minus
   debits.
-- At most five eligible customers will be selected using criteria frozen
-  before selection.
-- The same preprocessing, feature engineering, temporal evaluation and model
-  comparison rules will be applied to every selected customer.
+- A single global panel time-series regression model will be trained across
+  eligible Private customers, aiming to use the full available customer
+  population rather than a hand-picked small cohort.
+- Customers will be assigned to disjoint training, validation and test
+  partitions using a deterministic seed. The exact partition ratios will be
+  fixed during implementation.
+- Both 2024 and 2025 observations will remain available within the training
+  population. Feature construction is strictly past-only: every predictor must
+  use only information preceding its prediction target.
+- Customer-disjoint evaluation measures generalization to previously unseen
+  customers. It does not measure future-year generalization; any such claim
+  would require a separate chronological holdout.
+- At least two simple forecasting baselines will be compared with the global
+  machine-learning model using MAE and RMSE.
+- Overall performance, per-customer error distributions and limitations will
+  be reported.
+- The analysis begins with `customers.parquet` and `transactions.parquet`.
+  Other tables are optional and require documented feature-availability and
+  leakage checks before use.
 - The study is an educational forecasting prototype, not full accounting cash
   flow, live banking, lending or customer-profiling software.
+
+Negative weekly net cash flow means that recorded debits exceed recorded
+credits for that customer-week. It does not, by itself, establish an
+insufficient account balance or that an overdraft occurred.
+
+The final deliverable is a reproducible forecasting pipeline and a dashboard
+that presents predictions and aggregate evaluation metrics.
 
 The `data/raw`, `data/interim`, and `data/processed` directories contain only
 tracked `.gitkeep` placeholders at this stage. Generated reports should be

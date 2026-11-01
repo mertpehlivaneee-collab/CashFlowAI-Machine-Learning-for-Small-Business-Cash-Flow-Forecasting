@@ -45,6 +45,37 @@ def test_scope_decision_records_old_and_new_specifications() -> None:
     assert "zero SME-labelled" in decision
 
 
+def test_active_documents_define_global_panel_methodology() -> None:
+    required_fragments = (
+        "single global panel time-series regression model",
+        "full available customer population",
+        "customer-disjoint",
+        "deterministic seed",
+        "2024 and 2025",
+        "past-only",
+        "previously unseen customers",
+        "future-year generalization",
+        "at least two simple forecasting baselines",
+        "MAE and RMSE",
+        "customers.parquet",
+        "transactions.parquet",
+        "per-customer error distributions",
+        "reproducible forecasting pipeline",
+        "dashboard",
+        "negative weekly net cash flow",
+        "insufficient account",
+    )
+    for document in (README, DECISION):
+        text = " ".join(document.read_text(encoding="utf-8").lower().split())
+        for fragment in required_fragments:
+            assert " ".join(fragment.lower().split()) in text, (
+                f"Missing methodology statement {fragment!r} in {document.name}"
+            )
+        assert "at most five" not in text
+        assert "no more than five" not in text
+        assert "selected customers" not in text
+
+
 def test_historical_sme_evidence_is_preserved() -> None:
     proposal = ROOT / "CashFlowAI_Final_Project_Proposal.docx"
     weekly_plan = ROOT / "CashFlowAI_Task_Division_Weekly_Plan.docx"

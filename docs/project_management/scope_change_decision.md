@@ -88,52 +88,96 @@ flow, subject to eligibility, history-length and data-quality checks.
 
 ## Revised methodology
 
-The core forecasting design is retained:
+The forecasting design uses a single global panel time-series regression
+model:
 
-1. Select no more than five eligible Private customers using criteria frozen
-   before selection.
-2. Require an exact `segment` value of `Private`, a valid customer identifier,
-   complete core transaction fields and enough observed history to support
-   time-based evaluation.
-3. Calculate weekly net cash flow as EUR credits minus EUR debits:
+1. Build an eligible panel of Private customers with valid customer
+   identifiers, complete core transaction fields and enough observed history
+   for lag construction and evaluation. The aim is to use the full available
+   customer population that meets the eligibility rules rather than a
+   hand-picked small cohort.
+2. Define the prediction target as next-week net bank-transaction cash flow in
+   EUR:
 
    `net_cash_flow_week = sum(amount_eur where dc_indicator = C)
    - sum(amount_eur where dc_indicator = D)`
 
-4. Use at least two simple forecasting baselines.
-5. Evaluate at least one machine-learning algorithm against those baselines.
-6. Use chronological, rolling-origin evaluation with past-only features.
-7. Report MAE and RMSE.
-8. Apply identical preprocessing, feature engineering and evaluation rules to
-   every selected customer.
-9. Preserve reproducibility tests, documented limitations and the academic
-   portfolio dashboard.
+3. Train one global machine-learning regression model across the panel,
+   allowing information to be pooled across customers while retaining
+   customer-level temporal histories.
+4. Partition customers into disjoint training, validation and test groups
+   using a deterministic random seed. The exact partition ratios will be
+   finalized during implementation.
+5. Retain both 2024 and 2025 information within the training population,
+   subject to strict past-only feature construction. A predictor may use only
+   information available before the target week for the same prediction
+   origin.
+6. Compare at least two simple forecasting baselines with the global
+   machine-learning model. Candidate baselines include a previous-week
+   forecast and a historical mean or seasonal reference; the final baseline
+   definitions will be frozen before evaluation.
+7. Calculate MAE and RMSE on identical customer-disjoint validation and test
+   predictions for every method.
+8. Report overall performance, per-customer error distributions, baseline
+   comparisons and limitations.
 
-No customer has been selected, no weekly series has been aggregated, and no
-model or dashboard feature is implemented by this scope-change task.
+Customer-disjoint evaluation tests how well the fitted global relationship
+generalizes to previously unseen customers. It is not a future-year
+generalization test: validation and test customers may contribute observations
+from both 2024 and 2025. A future-year claim would require a separate
+chronological holdout and must not be inferred from this design.
 
-### Eligibility criteria to freeze before selection
+No customer has been assigned to a modelling partition, no weekly series has
+been aggregated, no partition has been created, and no model or dashboard
+feature is implemented by this documentation task.
 
-The selection protocol must document and freeze:
+### Data and eligibility requirements
 
-- Exact Private segment status.
-- Valid and non-null customer linkage.
+The initial modelling inputs are `customers.parquet` and
+`transactions.parquet`. Other product and balance tables are optional. They
+may be included only after documenting:
+
+- The exact field and customer-level linkage.
+- Whether the information would have been available at the forecast origin.
+- How monthly or snapshot data will be aligned without future information.
+- How joins or aggregation will avoid multiplying transaction rows.
+
+The eligibility protocol must be frozen before model evaluation and must
+document:
+
+- Exact Private segment status and valid customer linkage.
 - Weekly coverage and minimum observed history.
 - Treatment of weeks with no transactions.
 - Minimum transaction activity needed for a stable forecast evaluation.
-- A deterministic tie-break if more than five customers satisfy the criteria.
+- The deterministic customer-level partition assignment.
 
 The numerical history and activity thresholds require the forthcoming weekly
-coverage analysis. They must be fixed before customer selection to avoid
-selecting customers because their eventual forecast results look favourable.
+coverage analysis. They must be fixed before training and evaluation so the
+panel is not selected according to eventual model results.
+
+### Target interpretation
+
+Negative weekly net cash flow means that debits are forecast to exceed credits
+for that customer-week. It is not evidence of an insufficient account balance
+and is not equivalent to an overdraft. Account-balance tables are not part of
+the initial model and would require separate availability and leakage analysis
+if considered later.
 
 ## Evaluation and leakage controls
 
 - All features at forecast origin must use information available before the
   target week.
-- Train, validation and test periods must follow chronological boundaries.
-- Scaling, feature selection and model selection must be fitted within each
-  training window only.
+- Training, validation and test partitions must be disjoint at the customer
+  level. No customer may appear in more than one partition.
+- Assignment of customers to partitions must use a documented deterministic
+  seed so the split is reproducible.
+- The exact partition ratios remain an implementation decision, but the chosen
+  ratios must be frozen before model comparison.
+- Observations from both 2024 and 2025 may appear in the training population;
+  however, every per-customer prediction origin must use only preceding
+  information.
+- Scaling, feature selection and model selection must be fitted using only the
+  training partition.
 - Baselines and machine-learning models must use the same target definition,
   evaluation periods and metric calculation.
 - Per-customer results and common aggregate results must both be reported.
@@ -158,19 +202,20 @@ The migration preserves:
 
 ## Deliverables and milestones
 
-The deliverables remain technical documentation, a public project portfolio,
-an evaluated forecasting prototype, a simple dashboard and the final
-presentation/viva. Week numbers follow the existing project schedule; no
-calendar dates are invented here.
+The deliverables remain technical documentation, a public project portfolio, a
+reproducible forecasting pipeline, an evaluation report, a dashboard that
+shows predictions and aggregate metrics, and the final presentation/viva.
+Week numbers follow the existing project schedule; no calendar dates are
+invented here.
 
 | Week | Current-scope milestone | Primary responsibility | Exit condition |
 | ---: | --- | --- | --- |
 | 2 | Confirm revised scope and dataset readiness | All; Mert leads data evidence | Scope record reviewed; dataset limitations and SME evidence preserved |
-| 3 | Freeze Private-customer eligibility and build reproducible transaction preparation | Mert, with Rahul review | Documented selection criteria; versioned cleaning and weekly aggregation scripts |
-| 4 | Explore personal weekly series and freeze target/splits | Mert and Rahul; Mekha reviews | Eligible series, missing-week rule, temporal split specification |
-| 5 | Implement at least two simple baselines and past-only features | Rahul, with Mert review | Reproducible baseline results and feature specification |
-| 6 | Train at least one candidate machine-learning model | Rahul, with Mert and Mekha review | Reproducible model comparison draft without leakage |
-| 7 | Run rolling-origin evaluation and begin dashboard integration | Rahul and Mekha | MAE/RMSE results and first integrated forecast view |
+| 3 | Define the eligible Private-customer panel and build reproducible transaction preparation | Mert, with Rahul review | Documented eligibility rules; versioned cleaning and weekly target construction |
+| 4 | Explore the weekly panel and freeze customer-disjoint partitions and feature policy | Mert and Rahul; Mekha reviews | Deterministic seed and ratios documented; missing-week and leakage rules fixed |
+| 5 | Implement at least two simple baselines and past-only panel features | Rahul, with Mert review | Reproducible baseline results and frozen feature specification |
+| 6 | Train one global machine-learning model on the eligible panel | Rahul, with Mert and Mekha review | Reproducible model-comparison draft without leakage |
+| 7 | Evaluate on unseen customers and begin dashboard integration | Rahul and Mekha | MAE/RMSE results, per-customer error distributions and first integrated forecast view |
 | 8 | Finalize model comparison and test integrated prototype | Rahul and Mekha | Evaluation report, limitations and working demo |
 | 9 | Finalize portfolio, tests and presentation evidence | Mekha and all | Public repository and reproducible artefacts |
 | 10 | Verification and portfolio buffer | All | Independent rerun and review findings addressed |
@@ -178,13 +223,14 @@ calendar dates are invented here.
 
 ## Team responsibility changes
 
-- Mert Pehlivan continues to lead data engineering and quality. The work changes
-  from SME selection to Private-customer eligibility, reproducible extraction,
-  weekly aggregation and data-quality controls.
+- Mert Pehlivan continues to lead data engineering and quality. The work
+  changes from the historical SME scope to building the full eligible
+  Private-customer panel, reproducible weekly target construction and
+  data-quality controls.
 - Rahul Ravi continues to lead forecasting and evaluation. The work changes
-  from per-SME forecasting to per-customer personal cash-flow forecasting while
-  retaining baselines, machine learning, rolling-origin validation and
-  MAE/RMSE.
+  from the historical per-SME design to one customer-level global panel model,
+  customer-disjoint validation and per-customer error reporting while retaining
+  baseline comparison and MAE/RMSE.
 - Mekha Molly Raju continues to lead dashboard, integration and portfolio. The
   interface and reports must identify customers using non-sensitive labels or
   customer codes, not expose raw identifiers, and communicate synthetic-data
