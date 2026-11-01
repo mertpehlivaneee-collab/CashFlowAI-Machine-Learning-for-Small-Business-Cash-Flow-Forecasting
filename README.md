@@ -1,16 +1,39 @@
-# CashFlowAI
+# CashFlowAI: Machine Learning for Personal Cash-Flow Forecasting
 
-Stage 01 establishes a reproducible, read-only foundation for inspecting the
-synthetic banking dataset. This task deliberately includes no data extraction,
-sampling, transformation, schema assumptions, or forecasting.
+This repository develops a reproducible prototype for forecasting next-week
+net bank-transaction cash flow for individual banking customers. The project
+was migrated from an SME focus after record-level analysis found no
+authoritatively labelled SME customers in the available dataset.
+
+## Current research question
+
+> How accurately can machine-learning models forecast the next week's net
+> bank-transaction cash flow for individual banking customers compared with
+> simple forecasting methods?
+
+The scope decision, methodology, roadmap and academic-approval status are
+documented in [the scope change decision](docs/project_management/scope_change_decision.md).
+The original proposal, weekly plan and SME-focused inspection reports are
+retained as historical evidence and are not current project specifications.
 
 ## Scope
 
 The source archive is `synthetic_banking.tar.gz`. It is an immutable local
 input and must not be committed, re-extracted, uploaded, or modified. A
 read-only local extraction exists under `synthetic_banking/`; that directory
-is ignored by Git. Task 2A adds archive inventory, and later tasks will add
-metadata-only Parquet inspection without loading complete files into pandas.
+is ignored by Git.
+
+The current analytical scope is personal bank-transaction cash flow:
+
+- Eligible records are Private customers only.
+- The target is next-week net cash flow in EUR, defined as credits minus
+  debits.
+- At most five eligible customers will be selected using criteria frozen
+  before selection.
+- The same preprocessing, feature engineering, temporal evaluation and model
+  comparison rules will be applied to every selected customer.
+- The study is an educational forecasting prototype, not full accounting cash
+  flow, live banking, lending or customer-profiling software.
 
 The `data/raw`, `data/interim`, and `data/processed` directories contain only
 tracked `.gitkeep` placeholders at this stage. Generated reports should be
@@ -86,9 +109,10 @@ summary. The full technical JSON remains local because its exhaustive
 row-group statistics make it unsuitable for a normal source commit. It does
 not load tables or row groups, use pandas, or scan transaction records.
 
-## SME feasibility check
+## Historical SME feasibility check
 
-Run the focused customer-segment and conditional transaction-linkage check:
+This retained script and reports document why the project moved to a personal
+scope:
 
 ```powershell
 .\.venv\Scripts\python.exe -B scripts\check_sme_feasibility.py
@@ -111,12 +135,14 @@ The profiler makes one coordinated pass over `transactions.parquet`, scans the
 other tables in bounded batches, and retains only aggregate state. It does not
 load complete tables, publish raw identifiers, or modify source data.
 
+The completed evidence is available in
+[the comprehensive dataset analysis](reports/data_inspection/comprehensive_dataset_analysis.md).
+
 ## Dependencies
 
-- `pyarrow==23.0.1` — planned for read-only Parquet metadata inspection in a
-  later task.
+- `pyarrow==23.0.1` — used for bounded Parquet metadata and record-level
+  aggregate inspection.
 - `pytest==9.0.2` — development test runner.
 
-DuckDB is intentionally not included yet: Task 1 has no inspection scripts
-requiring it. It may be evaluated in a later task if it materially simplifies
-read-only metadata inspection.
+DuckDB is intentionally not included: the current inspection workflows use
+PyArrow and do not require it.

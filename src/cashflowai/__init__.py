@@ -1,4 +1,1 @@
-"""CashFlowAI package.
-
-Stage 01 Task 1 provides project scaffolding only.
-"""
+"""CashFlowAI personal bank-transaction cash-flow analytics package."""
