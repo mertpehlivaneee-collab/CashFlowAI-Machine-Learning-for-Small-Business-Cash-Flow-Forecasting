@@ -160,6 +160,20 @@ load complete tables, publish raw identifiers, or modify source data.
 The completed evidence is available in
 [the comprehensive dataset analysis](reports/data_inspection/comprehensive_dataset_analysis.md).
 
+## Stage 02A specifications
+
+The completed customer-distribution evidence and frozen designs are:
+
+- [Customer distribution analysis](reports/data_inspection/customer_distribution_analysis.md)
+- [Structured distribution results](reports/data_inspection/customer_distribution_analysis.json)
+- [Eight-table usage decisions](docs/data/table_usage_decision.md)
+- [Forecasting dataset specification](docs/data/forecasting_dataset_specification.md)
+- [Preprocessing specification](docs/data/preprocessing_specification.md)
+
+These documents define the weekly target, eligibility rules, customer-disjoint
+evaluation, past-only features and initial two-table model scope. They do not
+contain a processed panel or trained model.
+
 ## Dependencies
 
 - `pyarrow==23.0.1` — used for bounded Parquet metadata and record-level

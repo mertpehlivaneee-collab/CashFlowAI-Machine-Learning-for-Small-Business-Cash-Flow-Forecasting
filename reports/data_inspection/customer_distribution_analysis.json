@@ -1,0 +1,464 @@
+{
+  "amount_distribution": {
+    "above_10000_count": 79273,
+    "above_1000_count": 4847558,
+    "above_5000_count": 537250,
+    "count": 100000,
+    "exact_maximum": 80425.58,
+    "exact_minimum": 0.05,
+    "maximum": 6371.58,
+    "mean": 228.45287760000002,
+    "median": 32.23,
+    "method": "deterministic systematic sample",
+    "minimum": 0.09,
+    "negative_count": 0,
+    "non_null_count": 120926662,
+    "note": "Quantiles are estimates; counts and extrema are reported separately.",
+    "p05": 3.14,
+    "p25": 12.18,
+    "p75": 323.005,
+    "p90": 752.7909999999999,
+    "p95": 1000.0,
+    "p99": 1629.1470999999965,
+    "sample_size": 100000,
+    "zero_count": 0
+  },
+  "analysis_mode": "customer_distribution_discovery",
+  "calendar_definition": {
+    "complete_week_count": 104,
+    "complete_week_end": "2025-12-28",
+    "partial_week_end": "2025-12-31",
+    "partial_week_excluded_from_target": true,
+    "partial_week_start": "2025-12-29",
+    "partial_week_transaction_count": 708047,
+    "study_end": "2025-12-31",
+    "study_start": "2024-01-01",
+    "week_start": "Monday"
+  },
+  "customer_activity": {
+    "active_customer_count": 200000,
+    "active_customer_weeks": 19161610,
+    "active_days_per_customer": {
+      "count": 200000,
+      "maximum": 647,
+      "mean": 367.199565,
+      "median": 383.0,
+      "minimum": 11,
+      "p05": 146.0,
+      "p25": 280.0,
+      "p75": 466.0,
+      "p90": 520.0,
+      "p95": 543.0,
+      "p99": 580.0
+    },
+    "active_weeks_per_customer": {
+      "count": 200000,
+      "maximum": 104,
+      "mean": 95.80805,
+      "median": 103.0,
+      "minimum": 8,
+      "p05": 49.0,
+      "p25": 98.0,
+      "p75": 104.0,
+      "p90": 104.0,
+      "p95": 104.0,
+      "p99": 104.0
+    },
+    "calendar_weeks_per_customer": 104,
+    "credit_debit_customer_profile": {
+      "credit_and_debit": 200000
+    },
+    "credit_transactions_per_customer": {
+      "count": 200000,
+      "maximum": 146,
+      "mean": 64.50726,
+      "median": 62.0,
+      "minimum": 3,
+      "p05": 33.0,
+      "p25": 54.0,
+      "p75": 77.0,
+      "p90": 88.0,
+      "p95": 95.0,
+      "p99": 110.0
+    },
+    "customer_count": 200000,
+    "customers_active_in_both_years": 189608,
+    "debit_transactions_per_customer": {
+      "count": 200000,
+      "maximum": 1689,
+      "mean": 540.12605,
+      "median": 522.0,
+      "minimum": 5,
+      "p05": 131.0,
+      "p25": 312.0,
+      "p75": 745.0,
+      "p90": 925.0,
+      "p95": 1016.0,
+      "p99": 1207.0
+    },
+    "first_transaction_date_across_customers": "2024-01-01",
+    "first_transaction_date_distribution": {
+      "count": 200000,
+      "distinct_dates": 652,
+      "maximum": 656,
+      "maximum_date": "2025-10-18",
+      "mean": 40.512925,
+      "median": 2.0,
+      "median_date": "2024-01-03",
+      "minimum": 0,
+      "minimum_date": "2024-01-01",
+      "p05": 0.0,
+      "p05_date": "2024-01-01",
+      "p25": 1.0,
+      "p75": 4.0,
+      "p90": 107.0,
+      "p95": 376.0,
+      "p95_date": "2025-01-11",
+      "p99": 588.0
+    },
+    "history_days_per_active_customer": {
+      "count": 200000,
+      "maximum": 731,
+      "mean": 689.48404,
+      "median": 728.0,
+      "minimum": 69,
+      "p05": 354.0,
+      "p25": 725.0,
+      "p75": 730.0,
+      "p90": 731.0,
+      "p95": 731.0,
+      "p99": 731.0
+    },
+    "last_transaction_date_across_customers": "2025-12-31",
+    "last_transaction_date_distribution": {
+      "count": 200000,
+      "distinct_dates": 28,
+      "maximum": 730,
+      "maximum_date": "2025-12-31",
+      "mean": 728.996965,
+      "median": 730.0,
+      "median_date": "2025-12-31",
+      "minimum": 702,
+      "minimum_date": "2025-12-03",
+      "p05": 725.0,
+      "p05_date": "2025-12-26",
+      "p25": 729.0,
+      "p75": 730.0,
+      "p90": 730.0,
+      "p95": 730.0,
+      "p95_date": "2025-12-31",
+      "p99": 730.0
+    },
+    "transaction_totals_by_year": {
+      "2024": 54462693,
+      "2025": 66463969
+    },
+    "transactions_per_customer_active": {
+      "count": 200000,
+      "maximum": 1786,
+      "mean": 604.63331,
+      "median": 587.0,
+      "minimum": 12,
+      "p05": 178.0,
+      "p25": 373.0,
+      "p75": 817.0,
+      "p90": 1002.0,
+      "p95": 1097.0,
+      "p99": 1292.0
+    },
+    "transactions_per_customer_all": {
+      "count": 200000,
+      "maximum": 1786,
+      "mean": 604.63331,
+      "median": 587.0,
+      "minimum": 12,
+      "p05": 178.0,
+      "p25": 373.0,
+      "p75": 817.0,
+      "p90": 1002.0,
+      "p95": 1097.0,
+      "p99": 1292.0
+    },
+    "weekly_net_cash_flow_active_weeks": {
+      "active_week_count": 19161610,
+      "count": 99801,
+      "exact_maximum": 81101.99,
+      "exact_mean": 435.7918118425932,
+      "exact_minimum": -14957.210000000001,
+      "maximum": 58044.94,
+      "mean": 450.22343303132266,
+      "median": -58.260000000000005,
+      "method": "deterministic systematic sample",
+      "minimum": -7698.74,
+      "negative_week_count": 11955572,
+      "note": "Quantiles are estimates; counts and extrema are reported separately.",
+      "p05": -1006.22,
+      "p25": -303.87,
+      "p75": 565.11,
+      "p90": 2163.31,
+      "p95": 3713.55,
+      "p99": 8289.1,
+      "positive_week_count": 7201536,
+      "sample_size": 99801,
+      "zero_week_count": 4502
+    },
+    "weekly_transaction_count_distribution_on_active_weeks": {
+      "count": 19161610,
+      "maximum": 43,
+      "mean": 6.273930791828035,
+      "median": 5.0,
+      "minimum": 1,
+      "p05": 1.0,
+      "p25": 3.0,
+      "p75": 9.0,
+      "p90": 12.0,
+      "p95": 14.0,
+      "p99": 19.0
+    },
+    "yearly_activity_comparison": {
+      "active_2025_only": 10392,
+      "equal_transactions": 1474,
+      "fewer_transactions_2025": 26068,
+      "more_transactions_2025": 162066
+    },
+    "yearly_transaction_count_difference_2025_minus_2024": {
+      "count": 200000,
+      "maximum": 860,
+      "mean": 60.00638,
+      "median": 38.0,
+      "minimum": -402,
+      "p05": -18.0,
+      "p25": 13.0,
+      "p75": 80.0,
+      "p90": 155.0,
+      "p95": 232.0,
+      "p99": 418.0
+    },
+    "zero_activity_customer_weeks_in_full_window": 1638390,
+    "zero_activity_weeks_within_observed_spans": 530928,
+    "zero_transaction_customer_count": 0
+  },
+  "customer_file": {
+    "identifier_count": 200000,
+    "row_count": 200000,
+    "segment_counts": [
+      {
+        "count": 200000,
+        "value": "Private"
+      }
+    ]
+  },
+  "dataset_name": "student_export",
+  "eligibility_sensitivity": {
+    "active_week_sensitivity": [
+      {
+        "customer_count": 200000,
+        "minimum_active_weeks": 1
+      },
+      {
+        "customer_count": 199906,
+        "minimum_active_weeks": 12
+      },
+      {
+        "customer_count": 196342,
+        "minimum_active_weeks": 26
+      },
+      {
+        "customer_count": 189327,
+        "minimum_active_weeks": 52
+      },
+      {
+        "customer_count": 181565,
+        "minimum_active_weeks": 78
+      }
+    ],
+    "all_private_customers": 200000,
+    "history_length_sensitivity": [
+      {
+        "customer_count": 200000,
+        "minimum_history_days": 1
+      },
+      {
+        "customer_count": 199925,
+        "minimum_history_days": 90
+      },
+      {
+        "customer_count": 196592,
+        "minimum_history_days": 180
+      },
+      {
+        "customer_count": 189613,
+        "minimum_history_days": 365
+      },
+      {
+        "customer_count": 182790,
+        "minimum_history_days": 547
+      }
+    ],
+    "joint_sensitivity": [
+      {
+        "active_in_both_years": true,
+        "customer_count": 189608,
+        "minimum_active_weeks": 12,
+        "minimum_history_days": 180,
+        "minimum_transactions": 10
+      },
+      {
+        "active_in_both_years": true,
+        "customer_count": 189608,
+        "minimum_active_weeks": 26,
+        "minimum_history_days": 180,
+        "minimum_transactions": 10
+      },
+      {
+        "active_in_both_years": true,
+        "customer_count": 189255,
+        "minimum_active_weeks": 52,
+        "minimum_history_days": 180,
+        "minimum_transactions": 10
+      },
+      {
+        "active_in_both_years": true,
+        "customer_count": 189608,
+        "minimum_active_weeks": 12,
+        "minimum_history_days": 180,
+        "minimum_transactions": 50
+      },
+      {
+        "active_in_both_years": true,
+        "customer_count": 189608,
+        "minimum_active_weeks": 26,
+        "minimum_history_days": 180,
+        "minimum_transactions": 50
+      },
+      {
+        "active_in_both_years": true,
+        "customer_count": 189255,
+        "minimum_active_weeks": 52,
+        "minimum_history_days": 180,
+        "minimum_transactions": 50
+      },
+      {
+        "active_in_both_years": true,
+        "customer_count": 189531,
+        "minimum_active_weeks": 12,
+        "minimum_history_days": 180,
+        "minimum_transactions": 100
+      },
+      {
+        "active_in_both_years": true,
+        "customer_count": 189531,
+        "minimum_active_weeks": 26,
+        "minimum_history_days": 180,
+        "minimum_transactions": 100
+      },
+      {
+        "active_in_both_years": true,
+        "customer_count": 189240,
+        "minimum_active_weeks": 52,
+        "minimum_history_days": 180,
+        "minimum_transactions": 100
+      },
+      {
+        "active_in_both_years": true,
+        "customer_count": 181827,
+        "minimum_active_weeks": 12,
+        "minimum_history_days": 180,
+        "minimum_transactions": 200
+      },
+      {
+        "active_in_both_years": true,
+        "customer_count": 181827,
+        "minimum_active_weeks": 26,
+        "minimum_history_days": 180,
+        "minimum_transactions": 200
+      },
+      {
+        "active_in_both_years": true,
+        "customer_count": 181746,
+        "minimum_active_weeks": 52,
+        "minimum_history_days": 180,
+        "minimum_transactions": 200
+      }
+    ],
+    "recommended_eligibility": {
+      "active_in_both_years": true,
+      "eligible_customer_count": 189608,
+      "excluded_customer_count": 10392,
+      "minimum_active_weeks": 26,
+      "minimum_history_days": 180,
+      "minimum_transactions": 50,
+      "status": "provisional_specification_not_applied_to_model"
+    },
+    "transaction_count_sensitivity": [
+      {
+        "customer_count": 200000,
+        "minimum": 1
+      },
+      {
+        "customer_count": 200000,
+        "minimum": 10
+      },
+      {
+        "customer_count": 199345,
+        "minimum": 50
+      },
+      {
+        "customer_count": 196992,
+        "minimum": 100
+      },
+      {
+        "customer_count": 185777,
+        "minimum": 200
+      },
+      {
+        "customer_count": 143817,
+        "minimum": 400
+      }
+    ]
+  },
+  "limitations": [
+    "Zero transaction activity is treated as zero observed activity, not automatically as missing source data.",
+    "Weekly net-flow quantiles use a deterministic bounded sample; exact sign counts, sums and extrema are retained.",
+    "Exact transaction identifier uniqueness and counterparty-account distinctness remain deferred because their identifier spaces are unbounded for bounded-memory processing.",
+    "The final weekly panel, eligibility assignment, split assignment, preprocessing pipeline and models have not been created.",
+    "Synthetic data cannot establish performance on real customers."
+  ],
+  "pyarrow_version": "23.0.1",
+  "recommended_feature_groups": {
+    "calendar": [
+      "week_of_year",
+      "month"
+    ],
+    "excluded_from_initial_pipeline": [
+      "account_balance_features",
+      "SME_label"
+    ],
+    "rolling_history": [
+      "rolling_2_week_mean",
+      "rolling_4_week_mean",
+      "rolling_8_week_mean",
+      "rolling_8_week_std",
+      "credit_sum_windows",
+      "debit_sum_windows",
+      "active_day_count"
+    ],
+    "target_lags": [
+      "lag_1_net",
+      "lag_2_net",
+      "lag_4_net",
+      "lag_8_net"
+    ]
+  },
+  "report_schema_version": "1.0",
+  "transaction_scan": {
+    "customer_day_groups_processed": 89328218,
+    "execution": {
+      "batch_size": 131072,
+      "batches": 923
+    },
+    "orphan_customer_rows": 0,
+    "out_of_window_rows": 0,
+    "rows_scanned": 120926662
+  }
+}
