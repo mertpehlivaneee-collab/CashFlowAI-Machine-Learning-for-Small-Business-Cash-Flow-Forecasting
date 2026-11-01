@@ -1,0 +1,50 @@
+# Python environments and local configuration
+.venv/
+venv/
+env/
+.env
+.env.*
+
+# User-managed extracted dataset and Office lock files
+/synthetic_banking/
+~$*
+
+# Python tooling and test caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.ipynb_checkpoints/
+
+# Source data, archives, and extracted datasets (never commit)
+*.tar
+*.tar.gz
+*.tgz
+*.gz
+*.bz2
+*.xz
+*.zip
+*.7z
+*.parquet
+*.feather
+*.arrow
+*.orc
+*.avro
+data/raw/*
+!data/raw/.gitkeep
+data/interim/*
+!data/interim/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+
+# Generated large data artefacts; small sanitised reports remain trackable
+reports/**/*.csv
+reports/**/*.jsonl
+reports/**/*.parquet
+reports/**/*.feather
+reports/**/*.arrow
+reports/**/*.pkl
+reports/**/*.pickle
