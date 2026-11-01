@@ -71,6 +71,21 @@ The command reads archive headers only, reports member paths, sizes, types and
 safety warnings, and records the location of `DATA_DICTIONARY.html`. It does
 not read Parquet records, parse the dictionary, or inspect table schemas.
 
+## Parquet metadata inventory
+
+Inspect all extracted Parquet footers and reconcile their schemas with the
+local data dictionary:
+
+```powershell
+.\.venv\Scripts\python.exe -B scripts\inspect_parquet_metadata.py
+```
+
+The command writes detailed JSON metadata and a review-oriented Markdown report
+under `reports/data_inspection/`, together with a compact structured JSON
+summary. The full technical JSON remains local because its exhaustive
+row-group statistics make it unsuitable for a normal source commit. It does
+not load tables or row groups, use pandas, or scan transaction records.
+
 ## Dependencies
 
 - `pyarrow==23.0.1` — planned for read-only Parquet metadata inspection in a

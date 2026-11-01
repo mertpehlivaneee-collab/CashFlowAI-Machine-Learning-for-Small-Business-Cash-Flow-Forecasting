@@ -48,3 +48,6 @@ reports/**/*.feather
 reports/**/*.arrow
 reports/**/*.pkl
 reports/**/*.pickle
+
+# Full metadata dump is regenerable and intentionally kept local for review size
+/reports/data_inspection/parquet_inventory.json
